@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
+   <children>
+      <Text layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Your Scheduler" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="Consolas" size="27.0" />
+         </font>
+      </Text>
+      <Button layoutX="265.0" layoutY="118.0" mnemonicParsing="false" onAction="#handleNew" text="New..." AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="261.0">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="280.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleExit" text="Exit" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="261.0">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="261.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleOpen" text="Open..." AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="261.0">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
