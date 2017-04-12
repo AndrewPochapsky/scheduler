@@ -25,12 +25,12 @@
          </font>
       </Text>
       <TextArea fx:id="descriptionInput" layoutX="97.0" layoutY="140.0" prefHeight="100.0" prefWidth="262.0" promptText="description" wrapText="true" />
-      <Text layoutX="-82.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Columns" textAlignment="CENTER" wrappingWidth="600.0">
+      <Text layoutX="-82.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Rows" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="columnInput" layoutX="134.0" layoutY="276.0" promptText="number of columns" />
+      <TextField fx:id="rowInput" layoutX="134.0" layoutY="276.0" promptText="number of rows" />
       <Button layoutX="183.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleCreate" text="Create">
          <font>
             <Font name="Consolas" size="15.0" />
