@@ -25,6 +25,7 @@ public class CreateController implements Initializable{
     @FXML
     Text validText;
 
+    Scheduler scheduler =null;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         validText.setVisible(false);
@@ -33,7 +34,25 @@ public class CreateController implements Initializable{
     public void handleCreate(ActionEvent event)throws IOException{
         //close both windows
         //create new Scheduler using user inputed values
-        Scheduler scheduler = new Scheduler(titleInput.getText(), descriptionInput.getText());
+       // boolean overwrite = false;
+
+        if(!Utility.fileExists(titleInput.getText())){
+           initializeScheduler(event);
+        }
+        else{
+            System.out.println("File already exists");
+            AlertBox box = new AlertBox("Confirm", "File already exists;\noverride?");
+            box.display();
+            if(box.isYes()){
+                System.out.println("overriding file");
+                initializeScheduler(event);
+            }
+
+        }
+
+    }
+    private void initializeScheduler(ActionEvent event)throws IOException{
+        scheduler=new Scheduler(titleInput.getText(), descriptionInput.getText());
         if(Utility.isInteger(rowInput.getText())){
             int columnNum = Integer.parseInt(rowInput.getText());
             int count = 0;
@@ -42,6 +61,7 @@ public class CreateController implements Initializable{
                 count++;
             }
             System.out.println("adding "+ count+" rows");
+
             FileHandler.save(scheduler);
             ProgramController.setCurrentScheduler(scheduler);
 
@@ -55,10 +75,6 @@ public class CreateController implements Initializable{
             validText.setVisible(true);
             System.out.println("Please enter a number");
         }
-
-
-
-
     }
 
 

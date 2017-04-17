@@ -7,7 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Utility {
 
@@ -45,8 +48,45 @@ public class Utility {
             stage.setResizable(isResizable);
             stage.show();
         }
-
     }
 
+    public static List<String> fileNames(File[] filesArr){
+        List<String> list = new ArrayList<>();
+        for(File file: filesArr){
+            boolean remove = false;
+            String newName = "";
+            char[] name = file.getName().toCharArray();
+            for(char letter:name){
+                if(!remove && letter !='.'){
+                    newName+=letter;
+                }
+                if(letter=='.'){
+                    remove = true;
+                }
+            }
+            list.add(newName);
+        }
+        return list;
+    }
+
+    public static boolean fileExists(String input){
+        if(input.trim().equals("")){
+            return true;
+        }
+        boolean exists = false;
+        File folder = new File("schedulers");
+        File[] filesArr=folder.listFiles();
+        List<String> names = fileNames(filesArr);
+        for(String name:names){
+            //System.out.println("name: "+name);
+            //System.out.println("input: "+input);
+            if(input.equals(name)){
+                exists = true;
+                break;
+            }
+        }
+        //System.out.println("Exists: "+exists);
+        return exists;
+    }
 
 }

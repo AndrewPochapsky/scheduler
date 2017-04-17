@@ -10,14 +10,25 @@ public class Scheduler implements Serializable{
     private String description;
     private List<TableRow> rows;
 
+    private final String DEFAULT_TITLE = "Schedule";
+    private final String DEFAULT_DESCRIPTION = "Schedule your classes";
+
     public Scheduler(){
-        title= "Schedule";
-        description = "schedule your classes";
+        title= DEFAULT_TITLE;
+        description = DEFAULT_DESCRIPTION;
         rows = new ArrayList<>();
     }
     public Scheduler(String title, String description){
-        this.title = title;
-        this.description= description;
+        if(!title.trim().equals("")){
+            this.title = title;
+        }else{
+            this.title=DEFAULT_TITLE;
+        }
+        if(!description.trim().equals(""))
+            this.description= description;
+        else{
+            this.description=DEFAULT_DESCRIPTION;
+        }
         rows = new ArrayList<>();
     }
 

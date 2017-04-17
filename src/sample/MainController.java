@@ -16,7 +16,6 @@ public class MainController implements Initializable{
         Scheduler currentScheduler = ProgramController.getCurrentScheduler();
         nameDisplay.setText("Title: "+currentScheduler.getTitle());
         descriptionDisplay.setText("Description: "+currentScheduler.getDescription());
-        int amount = currentScheduler.getRows().size();
-        amountOfRowsDisplay.setText("Amount of rows: "+ String.valueOf(amount));
+        amountOfRowsDisplay.setText("Amount of rows: "+ String.valueOf(currentScheduler.getRows().size()));
     }
 }

@@ -33,28 +33,9 @@ public class OpenController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
         File folder = new File("schedulers");
-        List<String>fileNames = new ArrayList<>();
         File[] filesArr=folder.listFiles();
-        for(File file: filesArr){
-            boolean remove = false;
-            String newName = "";
-            char[] name = file.getName().toCharArray();
-            for(char letter:name){
-                if(!remove && letter !='.'){
-                    newName+=letter;
-                }
 
-                if(letter=='.'){
-                    remove = true;
-                }
-            }
-            fileNames.add(newName);
-        }
-        ObservableList<String> listOfFiles = FXCollections.observableArrayList(fileNames);
-
-
-        //fileList = new ListView<>(listOfFiles);
-
+        ObservableList<String> listOfFiles = FXCollections.observableArrayList(Utility.fileNames(filesArr));
         fileList.setItems(listOfFiles);
 
     }
