@@ -2,15 +2,10 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +20,6 @@ public class CreateController implements Initializable{
     @FXML
     Text validRowsText, validTitleText;
 
-    private Scheduler scheduler =null;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         validRowsText.setVisible(false);
@@ -34,6 +28,7 @@ public class CreateController implements Initializable{
 
     public void handleCreate(ActionEvent event)throws IOException{
         //TODO there must be a way to improve this code
+        //maybe refactor into one isValidInput method
         if(!Utility.containsLetter(titleInput.getText(), '.')){
             validTitleText.setVisible(false);
             if(!Utility.fileExists(titleInput.getText())){
@@ -58,7 +53,7 @@ public class CreateController implements Initializable{
         }
     }
     private void initializeScheduler(ActionEvent event)throws IOException{
-        scheduler=new Scheduler(titleInput.getText(), descriptionInput.getText());
+        Scheduler scheduler=new Scheduler(titleInput.getText(), descriptionInput.getText());
         if(Utility.isInteger(rowInput.getText())){
             validRowsText.setVisible(false);
             int columnNum = Integer.parseInt(rowInput.getText());
