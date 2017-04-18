@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CreateController">
    <children>
       <Text layoutX="-77.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup Scheduler" textAlignment="CENTER" wrappingWidth="600.0">
@@ -36,7 +35,12 @@
             <Font name="Consolas" size="15.0" />
          </font>
       </Button>
-      <Text fx:id="validText" fill="#ff0808" layoutX="133.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Please enter a number*">
+      <Text fx:id="validRowsText" fill="#ff0808" layoutX="133.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Please enter a number*">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="validTitleText" fill="#ff0808" layoutX="123.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Title cannot contain '.'*">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>

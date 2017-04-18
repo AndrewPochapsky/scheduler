@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Utility {
 
-
+    //TODO maybe change this function in the future since it's kinda jank
     public static boolean isInteger(String s){
         try {
             Integer.parseInt(s);
@@ -23,46 +23,36 @@ public class Utility {
         } catch(NullPointerException e) {
             return false;
         }
-        // only got here if we didn't return false
+        // only got here if it didn't return false
         return true;
     }
 
     public void loadScene(String name, double width, double height, ActionEvent event, boolean isMaximized, boolean isResizable, boolean newWindow)throws IOException{
+        Parent parent = FXMLLoader.load(getClass().getResource(name+".fxml"));
+        Scene scene = new Scene(parent, width, height);
+        Stage stage;
         if(newWindow){
-            Parent parent = FXMLLoader.load(getClass().getResource(name+".fxml"));
-            Scene scene = new Scene(parent, width, height);
-            Stage stage = new Stage();
-            stage.setTitle(name);
-            stage.setScene(scene);
-            stage.setMaximized(isMaximized);
-            stage.setResizable(isResizable);
-            stage.show();
+             stage = new Stage();
         }
         else{
-            Parent parent = FXMLLoader.load(getClass().getResource(name+".fxml"));
-            Scene scene = new Scene(parent, width, height);
-            Stage stage= (Stage)((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle(name);
-            stage.setMaximized(isMaximized);
-            stage.setResizable(isResizable);
-            stage.show();
+            stage= (Stage)((Node)event.getSource()).getScene().getWindow();
         }
+        stage.setScene(scene);
+        stage.setTitle(name);
+        stage.setMaximized(isMaximized);
+        stage.setResizable(isResizable);
+        stage.show();
     }
 
     public static List<String> fileNames(File[] filesArr){
         List<String> list = new ArrayList<>();
         for(File file: filesArr){
-            boolean remove = false;
             String newName = "";
             char[] name = file.getName().toCharArray();
             for(char letter:name){
-                if(!remove && letter !='.'){
-                    newName+=letter;
-                }
-                if(letter=='.'){
-                    remove = true;
-                }
+                if(letter=='.')
+                    break;
+                newName+=letter;
             }
             list.add(newName);
         }
@@ -70,23 +60,31 @@ public class Utility {
     }
 
     public static boolean fileExists(String input){
-        if(input.trim().equals("")){
+        if(input.trim().equals("") && fileExists("Schedule")){
             return true;
         }
+        input = input.toLowerCase();
         boolean exists = false;
         File folder = new File("schedulers");
         File[] filesArr=folder.listFiles();
         List<String> names = fileNames(filesArr);
         for(String name:names){
-            //System.out.println("name: "+name);
-            //System.out.println("input: "+input);
-            if(input.equals(name)){
+            if(input.equals(name.toLowerCase())){
                 exists = true;
                 break;
             }
         }
-        //System.out.println("Exists: "+exists);
         return exists;
+    }
+
+    public static boolean containsLetter(String string,char letter){
+        char[] arr = string.toCharArray();
+        for (char character: arr){
+            if(character==letter){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

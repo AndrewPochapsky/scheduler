@@ -23,37 +23,44 @@ public class CreateController implements Initializable{
     @FXML
     TextArea descriptionInput;
     @FXML
-    Text validText;
+    Text validRowsText, validTitleText;
 
-    Scheduler scheduler =null;
+    private Scheduler scheduler =null;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        validText.setVisible(false);
+        validRowsText.setVisible(false);
+        validTitleText.setVisible(false);
     }
 
     public void handleCreate(ActionEvent event)throws IOException{
-        //close both windows
-        //create new Scheduler using user inputed values
-       // boolean overwrite = false;
-
-        if(!Utility.fileExists(titleInput.getText())){
-           initializeScheduler(event);
-        }
-        else{
-            System.out.println("File already exists");
-            AlertBox box = new AlertBox("Confirm", "File already exists;\noverride?");
-            box.display();
-            if(box.isYes()){
-                System.out.println("overriding file");
+        //TODO there must be a way to improve this code
+        if(!Utility.containsLetter(titleInput.getText(), '.')){
+            validTitleText.setVisible(false);
+            if(!Utility.fileExists(titleInput.getText())){
                 initializeScheduler(event);
             }
-
+            else if(Utility.isInteger(rowInput.getText())){
+                System.out.println("File already exists");
+                AlertBox box = new AlertBox("Confirm", "File already exists;\noverride?");
+                box.display();
+                if(box.isYes()){
+                    System.out.println("overriding file");
+                    initializeScheduler(event);
+                }
+            }
+            else{
+                validRowsText.setVisible(true);
+            }
         }
-
+        else{
+            System.out.println("title has a period");
+            validTitleText.setVisible(true);
+        }
     }
     private void initializeScheduler(ActionEvent event)throws IOException{
         scheduler=new Scheduler(titleInput.getText(), descriptionInput.getText());
         if(Utility.isInteger(rowInput.getText())){
+            validRowsText.setVisible(false);
             int columnNum = Integer.parseInt(rowInput.getText());
             int count = 0;
             for (int i = 1; i <= columnNum;i++){
@@ -68,11 +75,10 @@ public class CreateController implements Initializable{
             Utility utility = new Utility();
             utility.loadScene("main", 1200, 800, event, true, true, false);
             Main.getMainStage().close();
-
         }
         else{
             //ask for valid input
-            validText.setVisible(true);
+            validRowsText.setVisible(true);
             System.out.println("Please enter a number");
         }
     }
