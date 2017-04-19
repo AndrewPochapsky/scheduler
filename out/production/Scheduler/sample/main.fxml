@@ -32,14 +32,15 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="nameDisplay" layoutX="236.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scheduler Name" />
-            <Text fx:id="descriptionDisplay" layoutX="248.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-            <Text fx:id="amountOfRowsDisplay" layoutX="227.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Rows: " />
-            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="204.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true">
+            <Text fx:id="nameDisplay" layoutX="474.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scheduler Name" />
+            <Text fx:id="descriptionDisplay" layoutX="486.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+            <Text fx:id="amountOfRowsDisplay" layoutX="465.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Rows: " />
+            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="463.0" layoutY="204.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../Desktop/question-mark.jpg" />
                </image>
             </ImageView>
+            <VBox fx:id="vbox" prefHeight="323.0" prefWidth="387.0" />
          </children>
       </AnchorPane>
    </center>

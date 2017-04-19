@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.File;
@@ -23,7 +24,8 @@ public class MainController implements Initializable{
     @FXML
     ImageView imageView;
 
-
+    @FXML
+    VBox vbox;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -40,6 +42,16 @@ public class MainController implements Initializable{
             System.out.println(e.toString());
         }
 
+        for(TableRow row: currentScheduler.getRows()){
+            if(row.getRow()==null){
+                row.setUpRow();
+                for(Element element: row.getElements()){
+                    element.setUpImageView();
+                }
+                vbox.getChildren().add(row.getRow());
+            }
+
+        }
     }
 
     public void handleDragOver(DragEvent event){

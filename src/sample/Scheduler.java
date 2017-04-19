@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,4 +63,7 @@ public class Scheduler implements Serializable{
     public void setRows(List<TableRow> rows) {
         this.rows = rows;
     }
+
+
+
 }
