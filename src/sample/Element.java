@@ -52,6 +52,7 @@ public class Element implements Serializable {
             imageView = new ImageView();
             imageView.setFitHeight(100);
             imageView.setFitWidth(100);
+            imageView.setPreserveRatio(true);
             imageView.setImage(image);
 
 

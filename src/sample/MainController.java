@@ -3,6 +3,7 @@ package sample;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -10,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,20 +28,16 @@ public class MainController implements Initializable{
     @FXML
     VBox vbox;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
         Scheduler currentScheduler = ProgramController.getCurrentScheduler();
+
         nameDisplay.setText("Title: "+currentScheduler.getTitle());
         descriptionDisplay.setText("Description: "+currentScheduler.getDescription());
         amountOfRowsDisplay.setText("Amount of rows: "+ String.valueOf(currentScheduler.getRows().size()));
-
-        File defaultImageFile = new File("src/question-mark.jpg");
-        /*try{
-            Image defaultImage = new Image(new FileInputStream(defaultImageFile));
-            imageView.setImage(defaultImage);
-        }catch(IOException e){
-            System.out.println(e.toString());
-        }*/
 
         for(TableRow row: currentScheduler.getRows()){
             if(row.getRow()==null){
@@ -50,6 +48,7 @@ public class MainController implements Initializable{
         for(TableRow row: currentScheduler.getRows()){
             for(Element element: row.getElements()){
                 ImageView view = element.getImageView();
+
                 view.setOnDragOver(new EventHandler<DragEvent>() {
                     @Override
                     public void handle(DragEvent event) {
@@ -65,6 +64,7 @@ public class MainController implements Initializable{
                         try{
                             Image img = new Image(new FileInputStream(files.get(0)));
                             view.setImage(img);
+                           // element.setImage(img);
                         }
                         catch(IOException e){
                             e.printStackTrace();
@@ -76,15 +76,10 @@ public class MainController implements Initializable{
         }
     }
 
-    public void handleDragOver(DragEvent event){
-        if(event.getDragboard().hasFiles()){
-            event.acceptTransferModes(TransferMode.ANY);
-        }
+    public void handleExit() throws IOException{
+        System.out.println("Closing");
+        FileHandler.save(ProgramController.getCurrentScheduler());
     }
 
-    public void handleDrop(DragEvent event) throws IOException{
-        List<File> files = event.getDragboard().getFiles();
-        Image img = new Image(new FileInputStream(files.get(0)));
-        //imageView.setImage(img);
-    }
+
 }
