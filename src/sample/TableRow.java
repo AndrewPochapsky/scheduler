@@ -11,7 +11,7 @@ public class TableRow implements Serializable {
 
     private String title;
     private List<Element> elements;
-    private HBox row;
+    //private HBox row;
 
     public TableRow(){
         title = "";
@@ -46,7 +46,7 @@ public class TableRow implements Serializable {
         this.title = title;
     }
 
-
+    /*
     public HBox getRow() {
         return row;
     }
@@ -54,11 +54,11 @@ public class TableRow implements Serializable {
     public void setRow(HBox row) {
         this.row = row;
     }
-
+    */
     public void setUpRow(){
         Element element = elements.get(0);
-        element.setUpImageView();
-        row = new HBox(element.getImageView());
+       // element.setUpImageView();
+        //row = new HBox(element.getImageView());
     }
 
     public List<Element> getElements() {

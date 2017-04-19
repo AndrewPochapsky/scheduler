@@ -9,14 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -29,7 +27,7 @@ public class MainController implements Initializable{
     VBox vbox;
 
 
-
+    private final File defaultImgFile = new File("src/question-mark.jpg");
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
@@ -40,15 +38,21 @@ public class MainController implements Initializable{
         amountOfRowsDisplay.setText("Amount of rows: "+ String.valueOf(currentScheduler.getRows().size()));
 
         for(TableRow row: currentScheduler.getRows()){
-            if(row.getRow()==null){
-                row.setUpRow();
-                vbox.getChildren().add(row.getRow());
-            }
-        }
-        for(TableRow row: currentScheduler.getRows()){
-            for(Element element: row.getElements()){
-                ImageView view = element.getImageView();
+            //TODO allow more than one imageview
+            ImageView view = new ImageView();
+            view.setFitHeight(100);
+            view.setFitWidth(100);
+            HBox hbox = new HBox(view);
+            vbox.getChildren().add(hbox);
+            System.out.println("looping");
+        }//Element element: row.getElements()
+        System.out.println("size of vbox children: "+vbox.getChildren().size());
+        for(int i = 0;i < vbox.getChildren().size(); i++){
+            HBox box = (HBox)vbox.getChildren().get(i);
+            ImageView view = (ImageView)box.getChildren().get(0);
 
+            try{
+                view.setImage(new Image(new FileInputStream(defaultImgFile)));
                 view.setOnDragOver(new EventHandler<DragEvent>() {
                     @Override
                     public void handle(DragEvent event) {
@@ -64,7 +68,7 @@ public class MainController implements Initializable{
                         try{
                             Image img = new Image(new FileInputStream(files.get(0)));
                             view.setImage(img);
-                           // element.setImage(img);
+                            // element.setImage(img);
                         }
                         catch(IOException e){
                             e.printStackTrace();
@@ -72,7 +76,12 @@ public class MainController implements Initializable{
 
                     }
                 });
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
             }
+
+
+
         }
     }
 

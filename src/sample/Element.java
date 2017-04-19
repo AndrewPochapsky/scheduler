@@ -12,13 +12,12 @@ public class Element implements Serializable {
 
     private String fileName;
     private int id;
-    private Image image;
-    private final File defaultImgFile = new File("src/question-mark.jpg");
+    //private Image image;
 
-    private ImageView imageView;
+
+    //private ImageView imageView;
 
     public Element(){
-
 
     }
 
@@ -37,7 +36,7 @@ public class Element implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-
+    /*
     public Image getImage() {
         return image;
     }
@@ -69,7 +68,7 @@ public class Element implements Serializable {
 
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
-    }
+    }*/
 }
 
 
