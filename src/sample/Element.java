@@ -18,13 +18,7 @@ public class Element implements Serializable {
     private ImageView imageView;
 
     public Element(){
-        try{
-            image = new Image(new FileInputStream(defaultImgFile));
 
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
 
     }
 
@@ -53,8 +47,19 @@ public class Element implements Serializable {
     }
 
     public void setUpImageView(){
-        imageView = new ImageView();
-        imageView.setImage(image);
+        try{
+            image = new Image(new FileInputStream(defaultImgFile));
+            imageView = new ImageView();
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            imageView.setImage(image);
+
+
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+
     }
 
     public ImageView getImageView() {

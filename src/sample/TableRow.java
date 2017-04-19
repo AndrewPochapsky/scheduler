@@ -25,6 +25,8 @@ public class TableRow implements Serializable {
     public TableRow(String title){
         this.title = title;
         elements= new ArrayList<>();
+        Element e = new Element();
+        elements.add(e);
         //setUpRow();
     }
 
@@ -55,6 +57,7 @@ public class TableRow implements Serializable {
 
     public void setUpRow(){
         Element element = elements.get(0);
+        element.setUpImageView();
         row = new HBox(element.getImageView());
     }
 

@@ -1,10 +1,12 @@
 package sample;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -22,9 +24,6 @@ public class MainController implements Initializable{
     Text nameDisplay, descriptionDisplay, amountOfRowsDisplay;
 
     @FXML
-    ImageView imageView;
-
-    @FXML
     VBox vbox;
 
     @Override
@@ -35,22 +34,45 @@ public class MainController implements Initializable{
         amountOfRowsDisplay.setText("Amount of rows: "+ String.valueOf(currentScheduler.getRows().size()));
 
         File defaultImageFile = new File("src/question-mark.jpg");
-        try{
+        /*try{
             Image defaultImage = new Image(new FileInputStream(defaultImageFile));
             imageView.setImage(defaultImage);
         }catch(IOException e){
             System.out.println(e.toString());
-        }
+        }*/
 
         for(TableRow row: currentScheduler.getRows()){
             if(row.getRow()==null){
                 row.setUpRow();
-                for(Element element: row.getElements()){
-                    element.setUpImageView();
-                }
                 vbox.getChildren().add(row.getRow());
             }
+        }
+        for(TableRow row: currentScheduler.getRows()){
+            for(Element element: row.getElements()){
+                ImageView view = element.getImageView();
+                view.setOnDragOver(new EventHandler<DragEvent>() {
+                    @Override
+                    public void handle(DragEvent event) {
+                        if(event.getDragboard().hasFiles()){
+                            event.acceptTransferModes(TransferMode.ANY);
+                        }
+                    }
+                });
+                view.setOnDragDropped(new EventHandler<DragEvent>() {
+                    @Override
+                    public void handle(DragEvent event) {
+                        List<File> files = event.getDragboard().getFiles();
+                        try{
+                            Image img = new Image(new FileInputStream(files.get(0)));
+                            view.setImage(img);
+                        }
+                        catch(IOException e){
+                            e.printStackTrace();
+                        }
 
+                    }
+                });
+            }
         }
     }
 
@@ -63,6 +85,6 @@ public class MainController implements Initializable{
     public void handleDrop(DragEvent event) throws IOException{
         List<File> files = event.getDragboard().getFiles();
         Image img = new Image(new FileInputStream(files.get(0)));
-        imageView.setImage(img);
+        //imageView.setImage(img);
     }
 }
