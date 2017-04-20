@@ -33,18 +33,18 @@ public class GalleryController implements Initializable {
     List<ImageView> views;
 
     File defaultImgFile = new File("src/question-mark.jpg");
-    Image defaultImg;
+    private Image defaultImg;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         views = new ArrayList<ImageView>();
         try{
+            defaultImg = new Image(new FileInputStream(defaultImgFile));
             for(Node node: pane.getChildren()){
                 if(node instanceof ImageView){
                     ImageView view = (ImageView)node;
-                    views.add(view);
-                    defaultImg = new Image(new FileInputStream(defaultImgFile));
                     view.setImage(defaultImg);
+                    views.add(view);
                 }
             }
 
@@ -70,19 +70,16 @@ public class GalleryController implements Initializable {
             BufferedImage bufferedImage = ImageIO.read(file);
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
             for(ImageView view: views){
-                if(view.getImage().equals(defaultImg)){
-                    System.out.println("setting image");
+                Image currentImage = view.getImage();
+                if(currentImage.equals(defaultImg)){
+                    System.out.println("default image");
                     view.setImage(image);
-                    //break;
+                    break;
                 }
             }
         }catch(IOException e){
             e.printStackTrace();
         }
-
-        /*if(file!=null){
-            System.out.println("selecting file");
-        }*/
     }
 
 }
