@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -66,6 +67,9 @@ public class MainController implements Initializable{
         view.setFitHeight(100);
         view.setFitWidth(100);
 
+        view.setPreserveRatio(true);
+        secondView.setPreserveRatio(true);
+
         HBox rowToAdd = new HBox(title, view, secondView);
         vbox.getChildren().add(rowToAdd);
 
@@ -122,6 +126,13 @@ public class MainController implements Initializable{
 
         }
     }
+
+    public void handleOpenGallery(ActionEvent event) throws IOException{
+        System.out.println("Opening Gallery");
+        Utility utility = new Utility();
+        utility.loadScene("gallery", 700, 400, event, false, false, true);
+    }
+
 
 
 }
