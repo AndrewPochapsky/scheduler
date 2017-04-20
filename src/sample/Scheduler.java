@@ -39,6 +39,9 @@ public class Scheduler implements Serializable{
         TableRow row = new TableRow();
         rows.add(row);
     }
+    public void addRow(TableRow row){
+        rows.add(row);
+    }
 
     public String getTitle() {
         return title;

@@ -20,8 +20,6 @@ public class Utility {
             Integer.parseInt(s);
         } catch(NumberFormatException e) {
             return false;
-        } catch(NullPointerException e) {
-            return false;
         }
         // only got here if it didn't return false
         return true;
