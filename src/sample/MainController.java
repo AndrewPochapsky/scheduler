@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,6 +34,10 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources){
 
         Scheduler currentScheduler = ProgramController.getCurrentScheduler();
+
+        for(String path: ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths()){
+            System.out.println(path);
+        }
 
         nameDisplay.setText("Title: "+currentScheduler.getTitle());
         descriptionDisplay.setText("Description: "+currentScheduler.getDescription());
@@ -79,6 +84,7 @@ public class MainController implements Initializable{
     public void handleExit() throws IOException{
         System.out.println("Closing");
         FileHandler.save(ProgramController.getCurrentScheduler());
+        Platform.exit();
     }
 
     private void initializeRows(){
@@ -119,11 +125,8 @@ public class MainController implements Initializable{
                             e.printStackTrace();
                         }
                     }
-
                 }
             }
-
-
         }
     }
 

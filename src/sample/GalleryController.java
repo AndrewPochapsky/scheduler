@@ -38,21 +38,12 @@ public class GalleryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         views = new ArrayList<ImageView>();
-        try{
-            defaultImg = new Image(new FileInputStream(defaultImgFile));
-            for(Node node: pane.getChildren()){
-                if(node instanceof ImageView){
-                    ImageView view = (ImageView)node;
-                    view.setImage(defaultImg);
-                    views.add(view);
-                }
-            }
 
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
+        setDefaultImages();
 
+        if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > 0){
+            setSavedImages();
+        }
     }
 
     public void handleUpload(ActionEvent event){
@@ -68,6 +59,9 @@ public class GalleryController implements Initializable {
 
         try{
             BufferedImage bufferedImage = ImageIO.read(file);
+            //add image path to list to be initialized at start
+            ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(file.getAbsolutePath());
+            System.out.println(file.getAbsolutePath());
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
             for(ImageView view: views){
                 Image currentImage = view.getImage();
@@ -81,5 +75,45 @@ public class GalleryController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    private void setDefaultImages(){
+        try{
+            defaultImg = new Image(new FileInputStream(defaultImgFile));
+            for(Node node: pane.getChildren()){
+                if(node instanceof ImageView){
+                    ImageView view = (ImageView)node;
+                    view.setImage(defaultImg);
+                    views.add(view);
+                }
+            }
+
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void setSavedImages(){
+        try{
+            for(String path: ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths()){
+                File file = new File(path);
+                Image image = new Image(new FileInputStream(file));
+                for(Node node: pane.getChildren()){
+                    if(node instanceof ImageView){
+                        ImageView view = (ImageView)node;
+                        if(view.getImage().equals(defaultImg)){
+                            view.setImage(image);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
