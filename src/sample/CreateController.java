@@ -61,7 +61,7 @@ public class CreateController implements Initializable{
             for (int i = 1; i <= columnNum;i++){
                 scheduler.addEmptyRow();
                 count++;
-            }//test
+            }
             System.out.println("adding "+ count+" rows");
 
             FileHandler.save(scheduler);

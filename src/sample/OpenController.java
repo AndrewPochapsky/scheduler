@@ -41,6 +41,7 @@ public class OpenController implements Initializable{
     }
 
     public void handleOpen(ActionEvent event) throws ClassNotFoundException, IOException{
+        //TODO do something about error being thrown when no file is selected and open is pressed
         FileHandler.load(fileList.getSelectionModel().getSelectedItem());
 
         Utility utility = new Utility();

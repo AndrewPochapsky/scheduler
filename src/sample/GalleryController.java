@@ -2,12 +2,14 @@ package sample;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -44,6 +46,7 @@ public class GalleryController implements Initializable {
         if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > 0){
             setSavedImages();
         }
+        initializeImageViews();
     }
 
     public void handleUpload(ActionEvent event){
@@ -61,12 +64,12 @@ public class GalleryController implements Initializable {
             BufferedImage bufferedImage = ImageIO.read(file);
             //add image path to list to be initialized at start
             ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(file.getAbsolutePath());
-            System.out.println(file.getAbsolutePath());
+            //System.out.println(file.getAbsolutePath());
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
             for(ImageView view: views){
                 Image currentImage = view.getImage();
                 if(currentImage.equals(defaultImg)){
-                    System.out.println("default image");
+                    //System.out.println("default image");
                     view.setImage(image);
                     break;
                 }
@@ -114,6 +117,24 @@ public class GalleryController implements Initializable {
         }
     }
 
+    private void initializeImageViews(){
+        for(ImageView view: views){
+            view.setOnDragDetected(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    Dragboard db = view.startDragAndDrop(TransferMode.ANY);
+
+                    ClipboardContent content = new ClipboardContent();
+                    //content.putFiles(db.getFiles());
+                    content.putImage(view.getImage());
+                    db.setContent(content);
+                    db.setDragView(view.getImage());
+                    //System.out.println(db.getFiles());
+                    event.consume();
+                }
+            });
+        }
+    }
 
 
 }
