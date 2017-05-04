@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 public class Element implements Serializable {
     //TODO if use is not found remove this class, use could be holding the directory if the image it has
-    private String fileName;
+    private String filePath;
     private int id;
 
     public Element(){
@@ -18,11 +18,11 @@ public class Element implements Serializable {
     }
 
     public String getFileName() {
-        return fileName;
+        return filePath;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFileName(String filePath) {
+        this.filePath = filePath;
     }
 
     public int getId() {
