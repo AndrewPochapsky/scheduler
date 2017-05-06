@@ -11,7 +11,8 @@ public class Scheduler implements Serializable{
 
     private String title;
     private String description;
-    private List<TableRow> rows;
+
+    private List<Element> elements;
 
     private GalleryInfo galleryInfo;
 
@@ -21,7 +22,7 @@ public class Scheduler implements Serializable{
     public Scheduler(){
         title= DEFAULT_TITLE;
         description = DEFAULT_DESCRIPTION;
-        rows = new ArrayList<>();
+        elements = new ArrayList<>();
         galleryInfo = new GalleryInfo();
     }
     public Scheduler(String title, String description){
@@ -35,16 +36,8 @@ public class Scheduler implements Serializable{
         else{
             this.description=DEFAULT_DESCRIPTION;
         }
-        rows = new ArrayList<>();
         galleryInfo = new GalleryInfo();
-    }
-
-    public void addEmptyRow(){
-        TableRow row = new TableRow();
-        rows.add(row);
-    }
-    public void addRow(TableRow row){
-        rows.add(row);
+        elements = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -63,13 +56,9 @@ public class Scheduler implements Serializable{
         this.description = description;
     }
 
-    public List<TableRow> getRows() {
-        return rows;
-    }
 
-    public void setRows(List<TableRow> rows) {
-        this.rows = rows;
-    }
+
+
 
     public GalleryInfo getGalleryInfo() {
         return galleryInfo;

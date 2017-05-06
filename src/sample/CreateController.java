@@ -14,15 +14,14 @@ import java.util.ResourceBundle;
 public class CreateController implements Initializable{
 
     @FXML
-    TextField titleInput, rowInput;
+    TextField titleInput;
     @FXML
     TextArea descriptionInput;
     @FXML
-    Text validRowsText, validTitleText;
+    Text validTitleText;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        validRowsText.setVisible(false);
         validTitleText.setVisible(false);
     }
 
@@ -34,7 +33,7 @@ public class CreateController implements Initializable{
             if(!Utility.fileExists(titleInput.getText())){
                 initializeScheduler(event);
             }
-            else if(Utility.isInteger(rowInput.getText())){
+            else {
                 System.out.println("File already exists");
                 AlertBox box = new AlertBox("Confirm", "File already exists;\noverride?");
                 box.display();
@@ -43,9 +42,7 @@ public class CreateController implements Initializable{
                     initializeScheduler(event);
                 }
             }
-            else{
-                validRowsText.setVisible(true);
-            }
+
         }
         else{
             System.out.println("title has a period");
@@ -54,30 +51,18 @@ public class CreateController implements Initializable{
     }
     private void initializeScheduler(ActionEvent event)throws IOException{
         Scheduler scheduler=new Scheduler(titleInput.getText(), descriptionInput.getText());
-        if(Utility.isInteger(rowInput.getText())){
-            validRowsText.setVisible(false);
-            int columnNum = Integer.parseInt(rowInput.getText());
-            int count = 0;
-            for (int i = 1; i <= columnNum;i++){
-                scheduler.addEmptyRow();
-                count++;
-            }
-            System.out.println("adding "+ count+" rows");
+        FileHandler.save(scheduler);
+        ProgramController.setCurrentScheduler(scheduler);
 
-            FileHandler.save(scheduler);
-            ProgramController.setCurrentScheduler(scheduler);
+        Utility utility = new Utility();
+        utility.loadScene("main", 1200, 800, event, true, true, false);
+        Main.getMainStage().close();
 
-            Utility utility = new Utility();
-            utility.loadScene("main", 1200, 800, event, true, true, false);
-            Main.getMainStage().close();
-        }
-        else{
-            //ask for valid input
-            validRowsText.setVisible(true);
-            System.out.println("Please enter a number");
-        }
+
     }
 
-
-
 }
+
+
+
+

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="956.0" prefWidth="1412.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Text fx:id="nameDisplay" layoutX="474.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scheduler Name" />
             <Text fx:id="descriptionDisplay" layoutX="486.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
             <Text fx:id="amountOfRowsDisplay" layoutX="465.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Rows: " />
-            <VBox fx:id="vbox" prefHeight="323.0" prefWidth="387.0" />
             <Button layoutX="470.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleOpenGallery" text="Open Gallery">
                <font>
                   <Font name="Consolas" size="15.0" />
@@ -47,4 +47,118 @@
          </children>
       </VBox>
    </top>
+   <left>
+      <VBox fx:id="vbox" alignment="CENTER_LEFT" prefHeight="924.0" prefWidth="772.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="183.0" prefWidth="772.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Period 1" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="210.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="113.0" prefHeight="183.0" prefWidth="419.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Period 2" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="210.0" top="15.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../../Desktop/me.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="194.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBLue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lunch" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="55.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="210.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="471.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Period 3" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="210.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="552.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Period 4" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="210.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
 </BorderPane>

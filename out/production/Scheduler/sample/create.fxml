@@ -12,34 +12,23 @@
             <Font name="Consolas" size="28.0" />
          </font>
       </Text>
-      <Text layoutX="-82.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display Title" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.bottomAnchor="319.0" AnchorPane.leftAnchor="-82.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="63.0">
+      <Text layoutX="-82.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.bottomAnchor="319.0" AnchorPane.leftAnchor="-82.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="63.0">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="titleInput" layoutX="134.0" layoutY="82.0" promptText="title" />
+      <TextField fx:id="titleInput" layoutX="134.0" layoutY="82.0" promptText="name" />
       <Text layoutX="-80.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
       </Text>
       <TextArea fx:id="descriptionInput" layoutX="97.0" layoutY="140.0" prefHeight="100.0" prefWidth="262.0" promptText="description" wrapText="true" />
-      <Text layoutX="-82.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Rows" textAlignment="CENTER" wrappingWidth="600.0">
-         <font>
-            <Font name="Consolas" size="15.0" />
-         </font>
-      </Text>
-      <TextField fx:id="rowInput" layoutX="134.0" layoutY="276.0" promptText="number of rows" />
-      <Button layoutX="183.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleCreate" text="Create">
+      <Button layoutX="185.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleCreate" text="Create">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
       </Button>
-      <Text fx:id="validRowsText" fill="#ff0808" layoutX="133.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Please enter a number*">
-         <font>
-            <Font name="Consolas" size="15.0" />
-         </font>
-      </Text>
       <Text fx:id="validTitleText" fill="#ff0808" layoutX="123.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Title cannot contain '.'*">
          <font>
             <Font name="Consolas" size="15.0" />

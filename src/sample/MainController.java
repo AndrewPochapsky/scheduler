@@ -30,7 +30,7 @@ public class MainController implements Initializable{
     @FXML
     VBox vbox;
 
-
+    //TODO consider moving this to program controller class as it will be used in other controllers probably
     private final File defaultImgFile = new File("src/question-mark.jpg");
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -43,43 +43,18 @@ public class MainController implements Initializable{
 
         nameDisplay.setText("Title: "+currentScheduler.getTitle());
         descriptionDisplay.setText("Description: "+currentScheduler.getDescription());
-        amountOfRowsDisplay.setText("Amount of rows: "+ String.valueOf(currentScheduler.getRows().size()));
-        for(TableRow row: ProgramController.getCurrentScheduler().getRows()){
+        /*for(TableRow row: ProgramController.getCurrentScheduler().getRows()){
 
             handleAddRow(row);
 
-        }
-        initializeRows();
-
-    }
-
-    public void handleAddRow(TableRow row){
-        //System.out.println("adding row");
-        int numOfImages = 4;
-        //ProgramController.getCurrentScheduler().addEmptyRow();
-
-
-        Text title = new Text(row.getTitle());
-        List<ImageView> views = new ArrayList<ImageView>();
-
-        for(int i = 0; i < numOfImages; i++){
-            views.add(new ImageView());
-            //System.out.println("Adding imageview");
+        }*/
+        try{
+            initializeRows();
+        }catch(IOException e){
+            e.printStackTrace();
         }
 
-        for(ImageView view : views){
 
-            view.setFitHeight(100);
-            view.setFitWidth(100);
-            view.setPreserveRatio(true);
-
-        }
-
-        HBox rowToAdd = new HBox(title);
-        rowToAdd.getChildren().addAll(views);
-        vbox.getChildren().add(rowToAdd);
-
-       // initializeRows();
     }
 
     public void handleExit() throws IOException{
@@ -88,53 +63,44 @@ public class MainController implements Initializable{
         Platform.exit();
     }
 
-    private void initializeRows(){
-       //Element element: row.getElements()
-        //System.out.println("size of vbox children: "+vbox.getChildren().size());
-        for(int i = 0;i < vbox.getChildren().size(); i++){
-            HBox box = (HBox)vbox.getChildren().get(i);
-            for(Node node: box.getChildren()){
-                if(node instanceof ImageView){
-                    ImageView view = (ImageView)node;
-                    view.setPreserveRatio(true);
-                    if(view.getImage()==null){
-                        try{
-                            view.setImage(new Image(new FileInputStream(defaultImgFile)));
-
-
-                            view.setOnDragOver(new EventHandler<DragEvent>() {
-                                public void handle(DragEvent event) {
-                                    if (event.getGestureSource() != view &&
-                                            event.getDragboard().hasImage()) {
-                                        event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-                                    }
-                                    event.consume();
-
-                                }
-                            });
-
-                            view.setOnDragDropped(new EventHandler<DragEvent>() {
-                                @Override
-                                public void handle(DragEvent event) {
-                                    //List<File> files = event.getDragboard().getFiles();
-                                    Dragboard db = event.getDragboard();
-                                    //Image img = new Image(new FileInputStream(files.get(0)));
-                                    //System.out.println("Detecting Drop");
-                                    if(db.hasImage())
-                                        //System.out.println("Detecting image");
-                                        view.setImage(db.getImage());
-                                    // element.setImage(img);
-
-
-                                }
-                            });
-
-                        }catch(FileNotFoundException e){
-                            e.printStackTrace();
-                        }
+    private void initializeRows() throws IOException{
+        List<ImageView> views = new ArrayList<>();
+        for(Node box: vbox.getChildren()){
+            if(box instanceof HBox){
+                HBox hbox = (HBox)box;
+                for(Node node: hbox.getChildren()){
+                    if(node instanceof ImageView){
+                        ImageView view = (ImageView)node;
+                        views.add(view);
                     }
                 }
+
             }
+
+        }
+        for(ImageView view: views){
+            //TODO set up saving the images
+            view.setImage(new Image(new FileInputStream(defaultImgFile)));
+
+            view.setOnDragOver(new EventHandler<DragEvent>() {
+                public void handle(DragEvent event) {
+                    if (event.getGestureSource() != view &&
+                            event.getDragboard().hasImage()) {
+                        event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+                    }
+                    event.consume();
+
+                }
+            });
+
+            view.setOnDragDropped(new EventHandler<DragEvent>() {
+                @Override
+                public void handle(DragEvent event) {
+                    Dragboard db = event.getDragboard();
+                    if(db.hasImage())
+                        view.setImage(db.getImage());
+                }
+            });
         }
     }
 
@@ -143,6 +109,9 @@ public class MainController implements Initializable{
         Utility utility = new Utility();
         utility.loadScene("gallery", 700, 400, event, false, false, true);
     }
+
+
+
 
 
 
