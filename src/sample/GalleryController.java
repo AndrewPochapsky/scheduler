@@ -74,8 +74,9 @@ public class GalleryController implements Initializable {
                     break;
                 }
             }
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(Exception e){
+            System.out.println("No Image selected to add to gallery");
+            //e.printStackTrace();
         }
     }
 
@@ -125,11 +126,9 @@ public class GalleryController implements Initializable {
                     Dragboard db = view.startDragAndDrop(TransferMode.ANY);
 
                     ClipboardContent content = new ClipboardContent();
-                    //content.putFiles(db.getFiles());
                     content.putImage(view.getImage());
                     db.setContent(content);
                     db.setDragView(view.getImage());
-                    //System.out.println(db.getFiles());
                     event.consume();
                 }
             });

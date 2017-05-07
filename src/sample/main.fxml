@@ -64,7 +64,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="p1" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
@@ -85,7 +85,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="p2" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
@@ -109,7 +109,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="lunch" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
@@ -130,7 +130,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="p3" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
@@ -151,7 +151,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fitHeight="152.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="p4" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>

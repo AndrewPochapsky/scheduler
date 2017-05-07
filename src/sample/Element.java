@@ -14,7 +14,7 @@ public class Element implements Serializable {
     private int id;
 
     public Element(){
-
+        filePath = "src/question-mark.jpg";
     }
 
     public String getFileName() {

@@ -3,6 +3,7 @@ package sample;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,8 @@ public class Scheduler implements Serializable{
 
     private String title;
     private String description;
+
+    private File directory;
 
     private List<Element> elements;
 
@@ -24,6 +27,11 @@ public class Scheduler implements Serializable{
         description = DEFAULT_DESCRIPTION;
         elements = new ArrayList<>();
         galleryInfo = new GalleryInfo();
+        directory = new File("schedulers/"+title);
+        directory.mkdir();
+        File imgFile = new File(directory + "/images");
+        imgFile.mkdir();
+
     }
     public Scheduler(String title, String description){
         if(!title.trim().equals("")){
@@ -38,6 +46,10 @@ public class Scheduler implements Serializable{
         }
         galleryInfo = new GalleryInfo();
         elements = new ArrayList<>();
+        directory = new File("schedulers/"+title);
+        directory.mkdir();
+        File imgFile = new File(directory + "/images");
+        imgFile.mkdir();
     }
 
     public String getTitle() {
@@ -57,10 +69,19 @@ public class Scheduler implements Serializable{
     }
 
 
-
-
+    public List<Element> getElements() {
+        return elements;
+    }
 
     public GalleryInfo getGalleryInfo() {
         return galleryInfo;
+    }
+
+    public File getDirectory() {
+        return directory;
+    }
+
+    public void setDirectory(File directory) {
+        this.directory = directory;
     }
 }
