@@ -36,6 +36,8 @@ public class MainController implements Initializable{
     @FXML
     ImageView lunch;
 
+    List<ImageView> views = new ArrayList<>();
+
     //TODO consider moving this to program controller class as it will be used in other controllers probably
     //private final File defaultImgFile = new File("src/question-mark.jpg");
     @Override
@@ -63,17 +65,21 @@ public class MainController implements Initializable{
             e.printStackTrace();
         }
 
-
     }
 
     public void handleExit() throws IOException{
+        for(ImageView view: views){
+            File file = new File("schedulers/"+ProgramController.getCurrentScheduler().getTitle()+"/images/"+view.getId());
+            saveImageToDisk(file, view);
+        }
+
         System.out.println("Closing");
         FileHandler.save(ProgramController.getCurrentScheduler());
         Platform.exit();
     }
 
     private void initializeRows() throws IOException{
-        List<ImageView> views = new ArrayList<>();
+
         for(Node box: vbox.getChildren()){
             if(box instanceof HBox){
                 HBox hbox = (HBox)box;
@@ -97,50 +103,6 @@ public class MainController implements Initializable{
             }
             File imgFile = new File(ProgramController.getCurrentScheduler().getElements().get(i).getFileName());
             view.setImage(new Image(new FileInputStream(imgFile)));
-            /*
-            view.setOnDragOver(new EventHandler<DragEvent>() {
-                public void handle(DragEvent event) {
-                    if (event.getGestureSource() != view &&
-                            event.getDragboard().hasImage()) {
-                        event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-                    }
-                    event.consume();
-
-                }
-            });*/
-            /*
-            view.setOnDragDropped(new EventHandler<DragEvent>() {
-                @Override
-                public void handle(DragEvent event) {
-                    Dragboard db = event.getDragboard();
-                    if(db.hasImage()){
-                        view.setImage(db.getImage());
-                        String path = db.getFiles().get(0).getAbsolutePath();
-                        //System.out.println("test");
-                        String id = view.getId();
-
-                        switch (id){
-                            case "p1":
-                                ProgramController.getCurrentScheduler().getElements().get(0).setFileName(path);
-                                break;
-                            case "p2":
-                                ProgramController.getCurrentScheduler().getElements().get(1).setFileName(path);
-                                break;
-                            case "lunch":
-                                ProgramController.getCurrentScheduler().getElements().get(2).setFileName(path);
-                                break;
-                            case "p3":
-                                ProgramController.getCurrentScheduler().getElements().get(3).setFileName(path);
-                                break;
-                            case "p4":
-                                ProgramController.getCurrentScheduler().getElements().get(4).setFileName(path);
-                                break;
-                        }
-                       // ProgramController.getCurrentScheduler().getElements().get(0).setFileName(path);
-                    }
-
-                }
-            });*/
         }
     }
 
@@ -156,60 +118,13 @@ public class MainController implements Initializable{
 
             ImageView view = (ImageView)event.getSource();
 
-            view.setImage(db.getImage());
 
-            //System.out.println("shit");
-            //System.out.println("test");
-            //System.out.println("ID: ");
-            String id = view.getId();
-            BufferedImage bImage = SwingFXUtils.fromFXImage(view.getImage(), null);
+
             //TODO create a folder for each scheduler
-            File file = new File("schedulers/"+ProgramController.getCurrentScheduler().getTitle()+"/images/"+view.getId());
-            try{
-                ImageIO.write(bImage, "png", file);
 
-                switch (id){
-                    case "p1":
-                        System.out.println("ya");
-                        ProgramController.getCurrentScheduler().getElements().get(0).setFileName(file.getAbsolutePath());
-                        break;
-                    case "p2":
-                        ProgramController.getCurrentScheduler().getElements().get(1).setFileName(file.getAbsolutePath());
-                        break;
-                    case "lunch":
-                        ProgramController.getCurrentScheduler().getElements().get(2).setFileName(file.getAbsolutePath());
-                        break;
-                    case "p3":
-                        ProgramController.getCurrentScheduler().getElements().get(3).setFileName(file.getAbsolutePath());
-                        break;
-                    case "p4":
-                        ProgramController.getCurrentScheduler().getElements().get(4).setFileName(file.getAbsolutePath());
-                        break;
-                }
-            }catch(IOException e){
-                e.printStackTrace();
-            }
 
-            /*
-            switch (id){
-                case "p1":
-                    System.out.println("ya");
-                    ProgramController.getCurrentScheduler().getElements().get(0).setFileName(path);
-                    break;
-                case "p2":
-                    ProgramController.getCurrentScheduler().getElements().get(1).setFileName(path);
-                    break;
-                case "lunch":
-                    ProgramController.getCurrentScheduler().getElements().get(2).setFileName(path);
-                    break;
-                case "p3":
-                    ProgramController.getCurrentScheduler().getElements().get(3).setFileName(path);
-                    break;
-                case "p4":
-                    ProgramController.getCurrentScheduler().getElements().get(4).setFileName(path);
-                    break;
-            }*/
-            // ProgramController.getCurrentScheduler().getElements().get(0).setFileName(path);
+
+            view.setImage(db.getImage());
         }
     }
 
@@ -220,6 +135,37 @@ public class MainController implements Initializable{
         }
         event.consume();
     }
+
+    private void saveImageToDisk(File file, ImageView view){
+        try{
+
+            BufferedImage bImage = SwingFXUtils.fromFXImage(view.getImage(), null);
+            String id = view.getId();
+            ImageIO.write(bImage, "png", file);
+
+            switch (id){
+                case "p1":
+                    System.out.println("ya");
+                    ProgramController.getCurrentScheduler().getElements().get(0).setFileName(file.getAbsolutePath());
+                    break;
+                case "p2":
+                    ProgramController.getCurrentScheduler().getElements().get(1).setFileName(file.getAbsolutePath());
+                    break;
+                case "lunch":
+                    ProgramController.getCurrentScheduler().getElements().get(2).setFileName(file.getAbsolutePath());
+                    break;
+                case "p3":
+                    ProgramController.getCurrentScheduler().getElements().get(3).setFileName(file.getAbsolutePath());
+                    break;
+                case "p4":
+                    ProgramController.getCurrentScheduler().getElements().get(4).setFileName(file.getAbsolutePath());
+                    break;
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
 
 
