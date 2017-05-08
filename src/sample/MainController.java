@@ -7,15 +7,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
@@ -27,48 +26,45 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable{
-    @FXML
-    Text nameDisplay, descriptionDisplay, amountOfRowsDisplay;
+
 
     @FXML
-    VBox vbox;
+    VBox vbox, galleryBox;
 
     @FXML
     ImageView lunch;
 
-    List<ImageView> views = new ArrayList<>();
+    @FXML
+    Button uploadButton;
+    List<ImageView> userViews = new ArrayList<>();
 
-    //TODO consider moving this to program controller class as it will be used in other controllers probably
-    //private final File defaultImgFile = new File("src/question-mark.jpg");
+    List<ImageView> galleryViews = new ArrayList<>();
+
+    File defaultImgFile = new File("src/question-mark.jpg");
+    private Image defaultImg;
+
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
-        for(Element e: ProgramController.getCurrentScheduler().getElements())
-            System.out.println(e.getFileName());
-
         Scheduler currentScheduler = ProgramController.getCurrentScheduler();
 
-        for(String path: ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths()){
-            //System.out.println(path);
-        }
 
-        nameDisplay.setText("Title: "+currentScheduler.getTitle());
-        descriptionDisplay.setText("Description: "+currentScheduler.getDescription());
-        /*for(TableRow row: ProgramController.getCurrentScheduler().getRows()){
-
-            handleAddRow(row);
-
-        }*/
         try{
             initializeRows();
         }catch(IOException e){
             e.printStackTrace();
         }
 
+        setDefaultImages();
+        if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > 0){
+            setSavedImages();
+        }
+
+
     }
 
     public void handleExit() throws IOException{
-        for(ImageView view: views){
+        for(ImageView view: userViews){
             File file = new File("schedulers/"+ProgramController.getCurrentScheduler().getTitle()+"/images/"+view.getId());
             saveImageToDisk(file, view);
         }
@@ -87,16 +83,15 @@ public class MainController implements Initializable{
                     if(node instanceof ImageView){
                         ImageView view = (ImageView)node;
                         //System.out.println("ID: "+view.getId());
-                        views.add(view);
+                        userViews.add(view);
                     }
                 }
 
             }
 
         }
-        for(int i = 0; i < views.size(); i++){
-            ImageView view = views.get(i);
-            //TODO set up saving the images
+        for(int i = 0; i < userViews.size(); i++){
+            ImageView view = userViews.get(i);
 
             if(ProgramController.getCurrentScheduler().getElements().size() <= i){
                 ProgramController.getCurrentScheduler().getElements().add(new Element());
@@ -165,6 +160,93 @@ public class MainController implements Initializable{
             e.printStackTrace();
         }
     }
+
+    private void setDefaultImages(){
+        try{
+            defaultImg = new Image(new FileInputStream(defaultImgFile));
+            for(Node node: galleryBox.getChildren()){
+                if(node instanceof HBox){
+                    HBox box = (HBox)node;
+                    for(Node _node: box.getChildren()){
+                        if(_node instanceof ImageView){
+                            ImageView view = (ImageView)_node;
+                            view.setImage(defaultImg);
+                            galleryViews.add(view);
+                        }
+                    }
+                }
+            }
+
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void handleUpload(ActionEvent event){
+        System.out.println("uploading image");
+        Stage currentStage = (Stage)uploadButton.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+
+        File file = fileChooser.showOpenDialog(currentStage);
+
+        try{
+            BufferedImage bufferedImage = ImageIO.read(file);
+            //add image path to list to be initialized at start
+            ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(file.getAbsolutePath());
+            //System.out.println(file.getAbsolutePath());
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            for(ImageView view: galleryViews){
+                Image currentImage = view.getImage();
+                if(currentImage.equals(defaultImg)){
+                    //System.out.println("default image");
+                    view.setImage(image);
+                    break;
+                }
+            }
+        }catch(Exception e){
+            System.out.println("No Image selected to add to gallery");
+            //e.printStackTrace();
+        }
+    }
+
+    private void setSavedImages(){
+        try{
+            for(String path: ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths()){
+                File file = new File(path);
+                Image image = new Image(new FileInputStream(file));
+                for(ImageView view: galleryViews){
+                    if(view.getImage().equals(defaultImg)){
+                        view.setImage(image);
+                        break;
+                    }
+                }
+
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setOnDragDetected(MouseEvent event){
+        ImageView view = (ImageView)event.getSource();
+        Dragboard db = view.startDragAndDrop(TransferMode.ANY);
+
+        ClipboardContent content = new ClipboardContent();
+        content.putImage(view.getImage());
+        db.setContent(content);
+        db.setDragView(view.getImage());
+        event.consume();
+    }
+
+
 
 
 

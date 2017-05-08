@@ -7,21 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="956.0" prefWidth="1412.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text fx:id="nameDisplay" layoutX="474.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scheduler Name" />
-            <Text fx:id="descriptionDisplay" layoutX="486.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-            <Text fx:id="amountOfRowsDisplay" layoutX="465.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Rows: " />
-            <Button layoutX="470.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleOpenGallery" text="Open Gallery">
-               <font>
-                  <Font name="Consolas" size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-   </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1054.0" prefWidth="1722.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -161,4 +147,112 @@
          </children>
       </VBox>
    </left>
+   <right>
+      <VBox fx:id="galleryBox" prefHeight="1022.0" prefWidth="955.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gallery" textAlignment="CENTER">
+               <font>
+                  <Font name="Consolas Bold" size="35.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="350.0" />
+               </VBox.margin>
+            </Text>
+            <HBox prefHeight="202.0" prefWidth="950.0">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="45.0" prefHeight="202.0" prefWidth="950.0">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="247.0" prefHeight="202.0" prefWidth="950.0">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="449.0" prefHeight="202.0" prefWidth="950.0">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#handleUpload" text="Upload">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </right>
 </BorderPane>

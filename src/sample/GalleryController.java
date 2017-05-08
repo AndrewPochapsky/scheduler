@@ -49,7 +49,7 @@ public class GalleryController implements Initializable {
         initializeImageViews();
     }
 
-    public void handleUpload(ActionEvent event){
+    public void handleUpload(){
         System.out.println("uploading image");
         Stage currentStage = (Stage)uploadButton.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
