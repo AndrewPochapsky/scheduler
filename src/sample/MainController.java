@@ -36,6 +36,7 @@ public class MainController implements Initializable{
 
     @FXML
     Button uploadButton;
+
     List<ImageView> userViews = new ArrayList<>();
 
     List<ImageView> galleryViews = new ArrayList<>();
@@ -171,6 +172,7 @@ public class MainController implements Initializable{
                         if(_node instanceof ImageView){
                             ImageView view = (ImageView)_node;
                             view.setImage(defaultImg);
+                            view.setPreserveRatio(false);
                             galleryViews.add(view);
                         }
                     }
@@ -244,6 +246,40 @@ public class MainController implements Initializable{
         db.setContent(content);
         db.setDragView(view.getImage());
         event.consume();
+    }
+
+    public void setOnDeletePressed(ActionEvent event){
+        Button button = (Button)event.getSource();
+        String id = button.getId();
+        ImageView view = null;
+        switch(id){
+            case "p1Button":
+                System.out.println("p1 pressed");
+                view = userViews.get(0);
+                break;
+            case "p2Button":
+                System.out.println("p2Pressed");
+                view = userViews.get(1);
+                break;
+            case "lunchButton":
+                System.out.println("lunch pressed");
+                view = userViews.get(2);
+                break;
+            case "p3Button":
+                System.out.println("p3 pressed");
+                view = userViews.get(3);
+                break;
+            case "p4Button":
+                System.out.println("p4 pressed");
+                view = userViews.get(4);
+                break;
+        }
+        try{
+            view.setImage(defaultImg);
+        }catch(NullPointerException e){
+            System.out.println("trying to delete from null imageview");
+        }
+
     }
 
 

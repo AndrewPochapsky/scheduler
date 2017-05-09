@@ -15,8 +15,7 @@ public class CreateController implements Initializable{
 
     @FXML
     TextField titleInput;
-    @FXML
-    TextArea descriptionInput;
+
     @FXML
     Text validTitleText;
 
@@ -28,29 +27,37 @@ public class CreateController implements Initializable{
     public void handleCreate(ActionEvent event)throws IOException{
         //TODO there must be a way to improve this code
         //maybe refactor into one isValidInput method
-        if(!Utility.containsLetter(titleInput.getText(), '.')){
-            validTitleText.setVisible(false);
-            if(!Utility.fileExists(titleInput.getText())){
-                initializeScheduler(event);
-            }
-            else {
-                System.out.println("File already exists");
-                AlertBox box = new AlertBox("Confirm", "File already exists;\noverride?");
-                box.display();
-                if(box.isYes()){
-                    System.out.println("overriding file");
+        if(!titleInput.getText().trim().equals("")){
+            if(!Utility.containsLetter(titleInput.getText(), '.')){
+                validTitleText.setVisible(false);
+                if(!Utility.fileExists(titleInput.getText())){
                     initializeScheduler(event);
                 }
-            }
+                else {
+                    System.out.println("File already exists");
+                    AlertBox box = new AlertBox("Confirm", "File already exists;\noverride?");
+                    box.display();
+                    if(box.isYes()){
+                        System.out.println("overriding file");
+                        initializeScheduler(event);
+                    }
+                }
 
+            }
+            else{
+                System.out.println("title has a period");
+                validTitleText.setText("*Title cannot contain '.'*");
+                validTitleText.setVisible(true);
+            }
         }
         else{
-            System.out.println("title has a period");
+            validTitleText.setText("*Please enter a name*");
             validTitleText.setVisible(true);
         }
+
     }
     private void initializeScheduler(ActionEvent event)throws IOException{
-        Scheduler scheduler=new Scheduler(titleInput.getText(), descriptionInput.getText());
+        Scheduler scheduler=new Scheduler(titleInput.getText());
         FileHandler.save(scheduler);
         ProgramController.setCurrentScheduler(scheduler);
 

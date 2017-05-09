@@ -16,7 +16,7 @@ public class MenuController {
 
     public void handleNew()throws IOException{
         Utility utility = new Utility();
-        utility.loadScene("create", 445, 375, null, false, false, true);
+        utility.loadScene("create", 445, 187, null, false, false, true);
     }
 
     public void handleOpen() throws IOException{

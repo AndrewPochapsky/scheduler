@@ -50,11 +50,19 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fx:id="p1" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="p1" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
                   </ImageView>
+                  <Button fx:id="p1Button" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="113.0" prefHeight="183.0" prefWidth="419.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
@@ -71,7 +79,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fx:id="p2" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="p2" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
@@ -79,6 +87,14 @@
                         <Image url="@../../../../Desktop/me.jpg" />
                      </image>
                   </ImageView>
+                  <Button fx:id="p2Button" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="194.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBLue;">
@@ -95,11 +111,19 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fx:id="lunch" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="lunch" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
                   </ImageView>
+                  <Button fx:id="lunchButton" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="471.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
@@ -116,11 +140,19 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fx:id="p3" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="p3" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
                   </ImageView>
+                  <Button fx:id="p3Button" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="552.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
@@ -137,11 +169,19 @@
                         </Text>
                      </children>
                   </VBox>
-                  <ImageView fx:id="p4" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="p4" fitHeight="152.0" fitWidth="152.0" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true">
                      <HBox.margin>
                         <Insets left="210.0" top="15.0" />
                      </HBox.margin>
                   </ImageView>
+                  <Button fx:id="p4Button" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </children>
@@ -180,18 +220,18 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="45.0" prefHeight="202.0" prefWidth="950.0">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#SetOnDragDropped" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#SetOnDragDropped" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#SetOnDragDropped" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#SetOnDragDropped" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
