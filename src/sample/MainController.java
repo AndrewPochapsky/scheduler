@@ -282,9 +282,23 @@ public class MainController implements Initializable{
 
     }
 
+    public void setOnDeleteAll(){
+        for(ImageView view: userViews){
+            view.setImage(defaultImg);
+        }
+    }
 
+    public void setOnDeleteGallery(){
+        AlertBox box = new AlertBox("Confrimation", "Are you sure?");
+        box.display();
+        if(box.isYes()){
+            for(ImageView view: galleryViews){
+                view.setImage(defaultImg);
+            }
+            ProgramController.getCurrentScheduler().getGalleryInfo().setImagePaths(new ArrayList<String>());
+        }
 
-
+    }
 
 
 }

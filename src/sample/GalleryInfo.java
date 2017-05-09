@@ -15,4 +15,9 @@ public class GalleryInfo implements Serializable{
     public List<String> getImagePaths() {
         return imagePaths;
     }
+
+    public void setImagePaths(List<String> paths){
+        imagePaths = paths;
+    }
+
 }

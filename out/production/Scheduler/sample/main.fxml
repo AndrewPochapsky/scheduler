@@ -34,8 +34,16 @@
       </VBox>
    </top>
    <left>
-      <VBox fx:id="vbox" alignment="CENTER_LEFT" prefHeight="924.0" prefWidth="772.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox" alignment="CENTER_LEFT" prefHeight="960.0" prefWidth="772.0" BorderPane.alignment="CENTER">
          <children>
+            <Button mnemonicParsing="false" onAction="#setOnDeleteAll" text="Delete All">
+               <font>
+                  <Font name="Consolas" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="575.0" top="-50.0" />
+               </VBox.margin>
+            </Button>
             <HBox prefHeight="183.0" prefWidth="772.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
                <children>
                   <VBox prefWidth="183.0" style="-fx-border-color: Black;">
@@ -287,11 +295,29 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#handleUpload" text="Upload">
+            <HBox>
+               <children>
+                  <Button fx:id="uploadButton1" mnemonicParsing="false" onAction="#handleUpload" text="Upload...">
+                     <font>
+                        <Font name="Consolas" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#setOnDeleteGallery" text="Delete Gallery">
+                     <font>
+                        <Font name="Consolas" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
-            </Button>
+            </HBox>
          </children>
       </VBox>
    </right>
