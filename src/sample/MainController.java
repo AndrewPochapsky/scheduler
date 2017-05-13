@@ -27,7 +27,6 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable{
 
-
     @FXML
     VBox vbox, galleryBox;
 
@@ -47,9 +46,6 @@ public class MainController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
-        Scheduler currentScheduler = ProgramController.getCurrentScheduler();
-
-
         try{
             initializeRows();
         }catch(IOException e){
@@ -60,8 +56,6 @@ public class MainController implements Initializable{
         if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > 0){
             setSavedImages();
         }
-
-
     }
 
     public void handleExit() throws IOException{
@@ -87,9 +81,7 @@ public class MainController implements Initializable{
                         userViews.add(view);
                     }
                 }
-
             }
-
         }
         for(int i = 0; i < userViews.size(); i++){
             ImageView view = userViews.get(i);
@@ -102,24 +94,10 @@ public class MainController implements Initializable{
         }
     }
 
-    public void handleOpenGallery(ActionEvent event) throws IOException{
-        System.out.println("Opening Gallery");
-        Utility utility = new Utility();
-        utility.loadScene("gallery", 700, 400, event, false, false, true);
-    }
-
     public void SetOnDragDropped(DragEvent event){
         Dragboard db = event.getDragboard();
         if(db.hasImage()){
-
             ImageView view = (ImageView)event.getSource();
-
-
-
-            //TODO create a folder for each scheduler
-
-
-
             view.setImage(db.getImage());
         }
     }
@@ -134,14 +112,12 @@ public class MainController implements Initializable{
 
     private void saveImageToDisk(File file, ImageView view){
         try{
-
             BufferedImage bImage = SwingFXUtils.fromFXImage(view.getImage(), null);
             String id = view.getId();
             ImageIO.write(bImage, "png", file);
 
             switch (id){
                 case "p1":
-                    System.out.println("ya");
                     ProgramController.getCurrentScheduler().getElements().get(0).setFileName(file.getAbsolutePath());
                     break;
                 case "p2":
@@ -178,14 +154,11 @@ public class MainController implements Initializable{
                     }
                 }
             }
-
         }
         catch(IOException e){
             e.printStackTrace();
         }
     }
-
-
 
     public void handleUpload(ActionEvent event){
         System.out.println("uploading image");
@@ -229,13 +202,11 @@ public class MainController implements Initializable{
                         break;
                     }
                 }
-
             }
         }catch(IOException e){
             e.printStackTrace();
         }
     }
-
 
     public void setOnDragDetected(MouseEvent event){
         ImageView view = (ImageView)event.getSource();
@@ -244,7 +215,7 @@ public class MainController implements Initializable{
         ClipboardContent content = new ClipboardContent();
         content.putImage(view.getImage());
         db.setContent(content);
-        db.setDragView(view.getImage());
+        //db.setDragView(view.getImage());
         event.consume();
     }
 
@@ -279,7 +250,6 @@ public class MainController implements Initializable{
         }catch(NullPointerException e){
             System.out.println("trying to delete from null imageview");
         }
-
     }
 
     public void setOnDeleteAll(){
@@ -297,8 +267,5 @@ public class MainController implements Initializable{
             }
             ProgramController.getCurrentScheduler().getGalleryInfo().setImagePaths(new ArrayList<String>());
         }
-
     }
-
-
 }

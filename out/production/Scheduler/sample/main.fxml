@@ -302,7 +302,7 @@
                         <Font name="Consolas" size="15.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#setOnDeleteGallery" text="Delete Gallery">
