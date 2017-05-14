@@ -45,7 +45,15 @@ public class MainController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        Main.getMainStage().setOnCloseRequest(e->{
+            System.out.println("Closing");
+            try{
+                handleExit();
+            }catch(IOException ex){
+                ex.printStackTrace();
+            }
 
+        });
         try{
             initializeRows();
         }catch(IOException e){

@@ -10,7 +10,7 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a File to Open" textAlignment="CENTER" wrappingWidth="458.46875">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a File to Open" textAlignment="CENTER" wrappingWidth="599.46875">
                <font>
                   <Font name="Consolas" size="22.0" />
                </font>
@@ -25,12 +25,12 @@
             </ListView>
          </children>
       </VBox>
-      <Button layoutX="191.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleOpen" text="Open">
+      <Button layoutX="262.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleOpen" text="Open">
          <font>
             <Font name="Consolas" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="closeButton" layoutX="186.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleClose" text="Close">
+      <Button fx:id="closeButton" layoutX="262.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleBack" text="Back">
          <font>
             <Font name="Consolas" size="20.0" />
          </font>

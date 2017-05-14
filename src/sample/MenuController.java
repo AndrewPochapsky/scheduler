@@ -14,14 +14,14 @@ import java.io.IOException;
 public class MenuController {
 
 
-    public void handleNew()throws IOException{
+    public void handleTeacher(ActionEvent event)throws IOException{
         Utility utility = new Utility();
-        utility.loadScene("create", 445, 187, null, false, false, true);
+        utility.loadScene("teacher", 600, 400, event, false, false, false);
     }
 
-    public void handleOpen() throws IOException{
+    public void handleStudent(ActionEvent event) throws IOException{
         Utility utility = new Utility();
-        utility.loadScene("open", 445, 375, null, false, false, true);
+        utility.loadScene("open", 600, 400, event, false, false, false);
 
     }
 

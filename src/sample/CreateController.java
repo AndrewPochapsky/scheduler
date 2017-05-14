@@ -60,13 +60,20 @@ public class CreateController implements Initializable{
         Scheduler scheduler=new Scheduler(titleInput.getText());
         FileHandler.save(scheduler);
         ProgramController.setCurrentScheduler(scheduler);
-
+        titleInput.setText("");
+        /*
         Utility utility = new Utility();
-        utility.loadScene("main", 1200, 800, event, true, true, false);
-        Main.getMainStage().close();
+        utility.loadScene("main", 1200, 800, event, true, true, true);
+        Main.getMainStage().close();*/
 
 
     }
+
+    public void handleBack(ActionEvent event)throws IOException{
+        Utility utility = new Utility();
+        utility.loadScene("teacher", 600, 400, event, false, false, false);
+    }
+
 
 }
 
