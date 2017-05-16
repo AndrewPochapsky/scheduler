@@ -31,7 +31,7 @@ public class MainController implements Initializable{
     VBox vbox, galleryBox;
 
     @FXML
-    ImageView lunch;
+    ImageView recyclingBin;
 
     @FXML
     Button uploadButton;
@@ -41,10 +41,19 @@ public class MainController implements Initializable{
     List<ImageView> galleryViews = new ArrayList<>();
 
     File defaultImgFile = new File("src/question-mark.jpg");
+    private ImageView currentView;
     private Image defaultImg;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        try{
+            recyclingBin.setImage(new Image(new FileInputStream(new File("src/recyclingbin.png"))));
+            defaultImg = new Image(new FileInputStream(defaultImgFile));
+        }catch(IOException exe){
+            exe.printStackTrace();
+        }
+
+
         Main.getMainStage().setOnCloseRequest(e->{
             System.out.println("Closing");
             try{
@@ -70,6 +79,18 @@ public class MainController implements Initializable{
         for(ImageView view: userViews){
             File file = new File("schedulers/"+ProgramController.getCurrentScheduler().getTitle()+"/images/"+view.getId());
             saveImageToDisk(file, view);
+        }
+        //ProgramController.getCurrentScheduler().getGalleryInfo().setImagePaths(new ArrayList<>());
+        for(int i = 0; i< galleryViews.size(); i++){
+            if(galleryViews.get(i).getImage().equals(defaultImg)){
+                System.out.println("removing");
+                //ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
+                if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i)
+                    ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
+                else{
+                    ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, defaultImgFile.getAbsolutePath());
+                }
+            }
         }
 
         System.out.println("Closing");
@@ -115,6 +136,7 @@ public class MainController implements Initializable{
                 event.getDragboard().hasImage()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
+        //currentView = (ImageView)event.getTarget();
         event.consume();
     }
 
@@ -147,25 +169,23 @@ public class MainController implements Initializable{
     }
 
     private void setDefaultImages(){
-        try{
-            defaultImg = new Image(new FileInputStream(defaultImgFile));
-            for(Node node: galleryBox.getChildren()){
-                if(node instanceof HBox){
-                    HBox box = (HBox)node;
-                    for(Node _node: box.getChildren()){
-                        if(_node instanceof ImageView){
-                            ImageView view = (ImageView)_node;
-                            view.setImage(defaultImg);
-                            view.setPreserveRatio(false);
-                            galleryViews.add(view);
-                        }
+
+        for(Node node: galleryBox.getChildren()){
+            if(node instanceof HBox){
+                HBox box = (HBox)node;
+                for(Node _node: box.getChildren()){
+                    if(_node instanceof ImageView){
+                        ImageView view = (ImageView)_node;
+                        view.setImage(defaultImg);
+                        view.setPreserveRatio(false);
+                        galleryViews.add(view);
                     }
                 }
             }
         }
-        catch(IOException e){
-            e.printStackTrace();
-        }
+
+
+
     }
 
     public void handleUpload(ActionEvent event){
@@ -182,20 +202,35 @@ public class MainController implements Initializable{
         try{
             BufferedImage bufferedImage = ImageIO.read(file);
             //add image path to list to be initialized at start
-            ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(file.getAbsolutePath());
+
             //System.out.println(file.getAbsolutePath());
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            for(ImageView view: galleryViews){
+           /* for(ImageView view: galleryViews){
                 Image currentImage = view.getImage();
                 if(currentImage.equals(defaultImg)){
                     //System.out.println("default image");
                     view.setImage(image);
                     break;
                 }
+            }*/
+            for(int i = 0; i< galleryViews.size(); i++){
+                Image currentImage = galleryViews.get(i).getImage();
+                if(currentImage.equals(defaultImg)){
+                    galleryViews.get(i).setImage(image);
+                   // System.out.println("i: "+i);
+                    //System.out.println("Size: "+ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size());
+                    if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i)
+                        ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, file.getAbsolutePath());
+                    else{
+                        ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, file.getAbsolutePath());
+                    }
+                    //System.out.println("saving to index "+i);
+                    break;
+                }
             }
         }catch(Exception e){
             System.out.println("No Image selected to add to gallery");
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -205,7 +240,11 @@ public class MainController implements Initializable{
                 File file = new File(path);
                 Image image = new Image(new FileInputStream(file));
                 for(ImageView view: galleryViews){
-                    if(view.getImage().equals(defaultImg)){
+
+
+                    //System.out.println(file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()));
+                    if(!file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()).equals("question-mark.jpg")&& view.getImage().equals(defaultImg)){
+                        System.out.println("yessssss");
                         view.setImage(image);
                         break;
                     }
@@ -224,6 +263,7 @@ public class MainController implements Initializable{
         content.putImage(view.getImage());
         db.setContent(content);
         //db.setDragView(view.getImage());
+        currentView = view;
         event.consume();
     }
 
@@ -276,4 +316,15 @@ public class MainController implements Initializable{
             ProgramController.getCurrentScheduler().getGalleryInfo().setImagePaths(new ArrayList<String>());
         }
     }
+
+    public void setOnRecycleDropped(DragEvent event){
+        Dragboard db = event.getDragboard();
+
+        if(db.hasImage()){
+            currentView.setImage(defaultImg);
+
+
+        }
+    }
+
 }
