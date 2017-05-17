@@ -16,12 +16,12 @@ public class MenuController {
 
     public void handleTeacher(ActionEvent event)throws IOException{
         Utility utility = new Utility();
-        utility.loadScene("teacher", 600, 400, event, false, false, false);
+        utility.loadScene("teacher", 600, 400, event, false, false, false, false);
     }
 
     public void handleStudent(ActionEvent event) throws IOException{
         Utility utility = new Utility();
-        utility.loadScene("open", 600, 400, event, false, false, false);
+        utility.loadScene("open", 600, 400, event, false, false, false, false);
 
     }
 

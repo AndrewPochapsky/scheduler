@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GalleryController">
+   <children>
+      <Text fx:id="title" layoutX="215.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name's Gallery">
+         <font>
+            <Font name="Consolas" size="22.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="recyclingBin" fitHeight="100.0" fitWidth="100.0" layoutX="40.0" layoutY="365.0" onDragDropped="#setOnRecycleDropped" onDragOver="#setOnDragOver" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recyclingbin.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="177.0" layoutY="43.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutX="177.0" layoutY="150.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutX="177.0" layoutY="257.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox layoutX="177.0" layoutY="365.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <Button layoutX="42.0" layoutY="178.0" mnemonicParsing="false" onAction="#handleUpload" text="Upload...">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font></Button>
+      <Button layoutX="14.0" layoutY="214.0" mnemonicParsing="false" onAction="#setOnDeleteGallery" text="Reset Gallery...">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="26.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleSaveAndExit" text="Save and Exit">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

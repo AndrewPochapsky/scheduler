@@ -18,7 +18,7 @@ public class RemoveController implements Initializable{
     @FXML
     ListView<String> fileList;
 
-
+    Utility utility = new Utility();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,24 +30,39 @@ public class RemoveController implements Initializable{
     }
 
     public void handleRemove() throws IOException{
+        AlertBox box = new AlertBox("Confirmation","Are you sure?");
 
         String s = fileList.getSelectionModel().getSelectedItem();
         if(s!=null){
-            File fileToRemove = new File("schedulers/"+s);
-            FileUtils.deleteDirectory(fileToRemove);
+            box.display();
+            if(box.isYes()){
+                File fileToRemove = new File("schedulers/"+s);
+                FileUtils.deleteDirectory(fileToRemove);
 
-            File folder = new File("schedulers");
-            File[] filesArr=folder.listFiles();
+                File folder = new File("schedulers");
+                File[] filesArr=folder.listFiles();
 
-            ObservableList<String> listOfFiles = FXCollections.observableArrayList(Utility.fileNames(filesArr));
-            fileList.setItems(listOfFiles);
+                ObservableList<String> listOfFiles = FXCollections.observableArrayList(Utility.fileNames(filesArr));
+                fileList.setItems(listOfFiles);
+            }
+
         }
 
     }
 
+    public void handleEditGallery()throws IOException, ClassNotFoundException{
+        if(fileList.getSelectionModel().getSelectedItem()!=null) {
+            String name = fileList.getSelectionModel().getSelectedItem();
+            FileHandler.load(name);
+            //load gallery scene
+            utility.loadScene("gallery", 600, 500, null, false, false, true, true);
+        }
+    }
+
+
     public void handleBack(ActionEvent event)throws IOException {
-        Utility utility = new Utility();
-        utility.loadScene("teacher", 600, 400, event, false, false, false);
+
+        utility.loadScene("teacher", 600, 400, event, false, false, false, false);
     }
 
 

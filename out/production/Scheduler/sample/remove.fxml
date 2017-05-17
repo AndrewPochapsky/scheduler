@@ -10,7 +10,7 @@
     <children>
         <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a Student to Remove" textAlignment="CENTER" wrappingWidth="599.46875">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a Student to Edit" textAlignment="CENTER" wrappingWidth="599.46875">
                     <font>
                         <Font name="Consolas" size="22.0" />
                     </font>
@@ -25,15 +25,20 @@
                 </ListView>
             </children>
         </VBox>
-        <Button layoutX="251.0" layoutY="223.0" mnemonicParsing="false" onAction="#handleRemove" text="Remove">
+        <Button layoutX="209.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleRemove" text="Remove Student">
             <font>
                 <Font name="Consolas" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="closeButton" layoutX="262.0" layoutY="271.0" mnemonicParsing="false" onAction="#handleBack" text="Back">
+        <Button fx:id="closeButton" layoutX="264.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleBack" text="Back">
             <font>
                 <Font name="Consolas" size="20.0" />
             </font>
         </Button>
+      <Button layoutX="220.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleEditGallery" text="Edit Gallery">
+         <font>
+            <Font name="Consolas" size="20.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

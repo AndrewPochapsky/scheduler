@@ -17,15 +17,17 @@ public class TeacherController implements Initializable{
     }
 
     public void handleAddStudent(ActionEvent event) throws IOException{
-        utility.loadScene("create", 600, 400, event, false, false, false);
+        utility.loadScene("create", 600, 400, event, false, false, false, false);
     }
 
     public void handleRemoveStudent(ActionEvent event)throws IOException{
-        utility.loadScene("remove", 600, 400, event, false, false, false);
+        utility.loadScene("remove", 600, 400, event, false, false, false, false);
     }
 
+
+
     public void handleBack(ActionEvent event)throws IOException{
-        utility.loadScene("menu", 600, 400, event, false, false, false);
+        utility.loadScene("menu", 600, 400, event, false, false, false, false);
     }
 
 

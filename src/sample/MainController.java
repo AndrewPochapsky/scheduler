@@ -33,9 +33,6 @@ public class MainController implements Initializable{
     @FXML
     ImageView recyclingBin;
 
-    @FXML
-    Button uploadButton;
-
     List<ImageView> userViews = new ArrayList<>();
 
     List<ImageView> galleryViews = new ArrayList<>();
@@ -81,17 +78,7 @@ public class MainController implements Initializable{
             saveImageToDisk(file, view);
         }
         //ProgramController.getCurrentScheduler().getGalleryInfo().setImagePaths(new ArrayList<>());
-        for(int i = 0; i< galleryViews.size(); i++){
-            if(galleryViews.get(i).getImage().equals(defaultImg)){
-                //System.out.println("removing");
-                //ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
-                if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i)
-                    ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
-                else{
-                    ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, defaultImgFile.getAbsolutePath());
-                }
-            }
-        }
+
 
         System.out.println("Closing");
         FileHandler.save(ProgramController.getCurrentScheduler());
@@ -129,6 +116,7 @@ public class MainController implements Initializable{
             ImageView view = (ImageView)event.getSource();
             view.setImage(db.getImage());
         }
+        event.consume();
     }
 
     public void SetOnDragOver(DragEvent event){
@@ -182,55 +170,6 @@ public class MainController implements Initializable{
                     }
                 }
             }
-        }
-
-
-
-    }
-
-    public void handleUpload(ActionEvent event){
-        System.out.println("uploading image");
-        Stage currentStage = (Stage)uploadButton.getScene().getWindow();
-        FileChooser fileChooser = new FileChooser();
-
-        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
-
-        File file = fileChooser.showOpenDialog(currentStage);
-
-        try{
-            BufferedImage bufferedImage = ImageIO.read(file);
-            //add image path to list to be initialized at start
-
-            //System.out.println(file.getAbsolutePath());
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-           /* for(ImageView view: galleryViews){
-                Image currentImage = view.getImage();
-                if(currentImage.equals(defaultImg)){
-                    //System.out.println("default image");
-                    view.setImage(image);
-                    break;
-                }
-            }*/
-            for(int i = 0; i< galleryViews.size(); i++){
-                Image currentImage = galleryViews.get(i).getImage();
-                if(currentImage.equals(defaultImg)){
-                    galleryViews.get(i).setImage(image);
-                   // System.out.println("i: "+i);
-                    //System.out.println("Size: "+ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size());
-                    if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i)
-                        ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, file.getAbsolutePath());
-                    else{
-                        ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, file.getAbsolutePath());
-                    }
-                    //System.out.println("saving to index "+i);
-                    break;
-                }
-            }
-        }catch(Exception e){
-            System.out.println("No Image selected to add to gallery");
-            e.printStackTrace();
         }
     }
 
@@ -306,22 +245,18 @@ public class MainController implements Initializable{
         }
     }
 
-    public void setOnDeleteGallery(){
-        AlertBox box = new AlertBox("Confrimation", "Are you sure?");
-        box.display();
-        if(box.isYes()){
-            for(ImageView view: galleryViews){
-                view.setImage(defaultImg);
-            }
-            ProgramController.getCurrentScheduler().getGalleryInfo().setImagePaths(new ArrayList<String>());
-        }
-    }
 
     public void setOnRecycleDropped(DragEvent event){
         Dragboard db = event.getDragboard();
 
         if(db.hasImage()){
-            currentView.setImage(defaultImg);
+            for(ImageView view: userViews){
+                if(currentView.equals(view)){
+                    currentView.setImage(defaultImg);
+                    break;
+                }
+            }
+
 
 
         }

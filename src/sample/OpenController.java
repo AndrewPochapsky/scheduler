@@ -46,13 +46,16 @@ public class OpenController implements Initializable{
         if(fileList.getSelectionModel().getSelectedItem()!=null){
             FileHandler.load(fileList.getSelectionModel().getSelectedItem());
 
-            utility.loadScene("main", 1200, 800, event, true, true, false);
+            utility.loadScene("main", 1200, 800, event, true, true, false, false);
             //Main.getMainStage().close();
         }
     }
 
+
+
+
     public void handleBack(ActionEvent event)throws IOException{
-        utility.loadScene("menu", 600, 400, event, false, false, false);
+        utility.loadScene("menu", 600, 400, event, false, false, false, false);
     }
 
 

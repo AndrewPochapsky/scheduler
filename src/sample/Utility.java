@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class Utility {
         return true;
     }
 
-    public void loadScene(String name, double width, double height, ActionEvent event, boolean isMaximized, boolean isResizable, boolean newWindow)throws IOException{
+    public void loadScene(String name, double width, double height, ActionEvent event, boolean isMaximized, boolean isResizable, boolean newWindow, boolean isUndecorated)throws IOException{
         Parent parent = FXMLLoader.load(getClass().getResource(name+".fxml"));
         Scene scene = new Scene(parent, width, height);
         Stage stage;
@@ -34,6 +35,9 @@ public class Utility {
         }
         else{
             stage= (Stage)((Node)event.getSource()).getScene().getWindow();
+        }
+        if(isUndecorated){
+            stage.initStyle(StageStyle.UNDECORATED);
         }
         stage.setScene(scene);
         stage.setTitle(name);
