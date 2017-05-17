@@ -83,7 +83,7 @@ public class MainController implements Initializable{
         //ProgramController.getCurrentScheduler().getGalleryInfo().setImagePaths(new ArrayList<>());
         for(int i = 0; i< galleryViews.size(); i++){
             if(galleryViews.get(i).getImage().equals(defaultImg)){
-                System.out.println("removing");
+                //System.out.println("removing");
                 //ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
                 if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i)
                     ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
@@ -244,7 +244,7 @@ public class MainController implements Initializable{
 
                     //System.out.println(file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()));
                     if(!file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()).equals("question-mark.jpg")&& view.getImage().equals(defaultImg)){
-                        System.out.println("yessssss");
+                        //System.out.println("yessssss");
                         view.setImage(image);
                         break;
                     }

@@ -305,7 +305,7 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#setOnDeleteGallery" text="Delete Gallery">
+                  <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#setOnDeleteGallery" text="Delete Gallery...">
                      <font>
                         <Font name="Consolas" size="15.0" />
                      </font>
