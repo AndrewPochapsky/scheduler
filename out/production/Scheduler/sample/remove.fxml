@@ -25,17 +25,17 @@
                 </ListView>
             </children>
         </VBox>
-        <Button layoutX="209.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleRemove" text="Remove Student">
+        <Button layoutX="191.0" layoutY="218.0" mnemonicParsing="false" onAction="#handleRemove" text="Remove Student...">
             <font>
                 <Font name="Consolas" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="closeButton" layoutX="264.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleBack" text="Back">
+        <Button fx:id="closeButton" layoutX="263.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleBack" text="Back">
             <font>
                 <Font name="Consolas" size="20.0" />
             </font>
         </Button>
-      <Button layoutX="220.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleEditGallery" text="Edit Gallery">
+      <Button layoutX="202.0" layoutY="263.0" mnemonicParsing="false" onAction="#handleEditGallery" text="Edit Gallery...">
          <font>
             <Font name="Consolas" size="20.0" />
          </font>

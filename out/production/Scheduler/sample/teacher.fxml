@@ -22,7 +22,7 @@
             <Font name="Consolas" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="232.0" layoutY="133.0" mnemonicParsing="false" onAction="#handleRemoveStudent" text="Edit Student...">
+      <Button layoutX="228.0" layoutY="133.0" mnemonicParsing="false" onAction="#handleRemoveStudent" text="Edit Student...">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>

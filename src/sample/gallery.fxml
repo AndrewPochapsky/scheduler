@@ -21,20 +21,12 @@
       </ImageView>
       <HBox layoutX="177.0" layoutY="43.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_0" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../../Desktop/me.jpg" />
-               </image>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_1" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
@@ -42,7 +34,15 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_2" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="_3" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
@@ -54,20 +54,12 @@
       </HBox>
       <HBox layoutX="177.0" layoutY="150.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_4" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../../Desktop/me.jpg" />
-               </image>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_5" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
@@ -75,7 +67,15 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_6" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="_7" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
@@ -87,20 +87,12 @@
       </HBox>
       <HBox layoutX="177.0" layoutY="257.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_8" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../../Desktop/me.jpg" />
-               </image>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_9" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
@@ -108,7 +100,15 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_10" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="_11" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
@@ -120,20 +120,12 @@
       </HBox>
       <HBox layoutX="177.0" layoutY="365.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_12" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../../Desktop/me.jpg" />
-               </image>
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_13" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>
@@ -141,7 +133,15 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+            <ImageView fx:id="_14" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Desktop/me.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="_15" fitHeight="100.0" fitWidth="100.0" onDragDetected="#setOnDragDetected" pickOnBounds="true">
                <image>
                   <Image url="@../../../../Desktop/me.jpg" />
                </image>

@@ -100,12 +100,14 @@ public class GalleryController implements Initializable{
                 Image currentImage = galleryViews.get(i).getImage();
                 if(currentImage.equals(defaultImg)){
                     galleryViews.get(i).setImage(image);
-
-                    if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i)
+                   // System.out.println("INT i ="+i);
+                    /*if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i) {
+                        System.out.println("setting to new image (gallery)");
                         ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, file.getAbsolutePath());
-                    else{
+                    }else{*/
+                        System.out.println("adding new image (gallery)");
                         ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, file.getAbsolutePath());
-                    }
+                    //}
                     break;
                 }
             }
@@ -120,13 +122,13 @@ public class GalleryController implements Initializable{
             for(String path: ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths()){
                 File file = new File(path);
                 Image image = new Image(new FileInputStream(file));
-                for(ImageView view: galleryViews){
+                for(int i = 0; i< galleryViews.size(); i++){
 
-
+                    //System.out.println("path2: "+path);
                     //System.out.println(file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()));
-                    if(!file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()).equals("question-mark.jpg")&& view.getImage().equals(defaultImg)){
-                        //System.out.println("yessssss");
-                        view.setImage(image);
+                    if(!file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()).equals("question-mark.jpg")&& galleryViews.get(i).getImage().equals(defaultImg)){
+                        System.out.println("setting saved image");
+                        galleryViews.get(i).setImage(image);
                         break;
                     }
                 }
@@ -173,9 +175,20 @@ public class GalleryController implements Initializable{
 
         if(db.hasImage()){
             currentView.setImage(defaultImg);
+            String id = currentView.getId();
+            System.out.println("Id: "+id);
+            ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(Integer.parseInt(id.substring(1)), defaultImgFile.getAbsolutePath());
 
 
         }
+        for(int i =0; i < galleryViews.size(); i++){
+            if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().get(i).equals(defaultImgFile.getAbsolutePath())){
+                ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().remove(i);
+            }
+            System.out.println("Path: "+ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().get(i));
+        }
+
+        event.consume();
     }
 
 
@@ -186,11 +199,13 @@ public class GalleryController implements Initializable{
             if(galleryViews.get(i).getImage().equals(defaultImg)){
                 //System.out.println("removing");
                 //ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
-                if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i)
+                /*if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i) {
+                    System.out.println("changing to default image");
                     ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
-                else{
+                }else{
+                    System.out.println("adding default image");
                     ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, defaultImgFile.getAbsolutePath());
-                }
+                }*/
             }
         }
 
