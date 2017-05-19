@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -36,6 +37,8 @@ public class MainController implements Initializable{
     List<ImageView> userViews = new ArrayList<>();
 
     List<ImageView> galleryViews = new ArrayList<>();
+
+    List<TextField> fields = new ArrayList<>();
 
     File defaultImgFile = new File("src/question-mark.jpg");
     private ImageView currentView;
@@ -70,6 +73,7 @@ public class MainController implements Initializable{
         if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > 0){
             setSavedImages();
         }
+        setUpTextFields();
     }
 
     public void handleExit() throws IOException{
@@ -77,8 +81,11 @@ public class MainController implements Initializable{
             File file = new File("schedulers/"+ProgramController.getCurrentScheduler().getTitle()+"/images/"+view.getId());
             saveImageToDisk(file, view);
         }
-        //ProgramController.getCurrentScheduler().getGalleryInfo().setImagePaths(new ArrayList<>());
 
+        //save fields
+        for(int i =0; i <fields.size(); i++){
+            ProgramController.getCurrentScheduler().getElements().get(i).setText(fields.get(i).getText());
+        }
 
         System.out.println("Closing");
         FileHandler.save(ProgramController.getCurrentScheduler());
@@ -91,10 +98,16 @@ public class MainController implements Initializable{
             if(box instanceof HBox){
                 HBox hbox = (HBox)box;
                 for(Node node: hbox.getChildren()){
-                    if(node instanceof ImageView){
-                        ImageView view = (ImageView)node;
-                        //System.out.println("ID: "+view.getId());
-                        userViews.add(view);
+                    if(node instanceof VBox){
+                        VBox v = (VBox)node;
+                        for(Node element : v.getChildren()){
+                            if(element instanceof ImageView){
+                                userViews.add((ImageView)element);
+                            }
+                            if(element instanceof TextField){
+                                fields.add((TextField)element);
+                            }
+                        }
                     }
                 }
             }
@@ -261,5 +274,12 @@ public class MainController implements Initializable{
 
         }
     }
+
+    private void setUpTextFields(){
+        for(int i =0; i < fields.size(); i++){
+            fields.get(i).setText(ProgramController.getCurrentScheduler().getElements().get(i).getText());
+        }
+    }
+
 
 }
