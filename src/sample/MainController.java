@@ -14,6 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -43,9 +45,11 @@ public class MainController implements Initializable{
     File defaultImgFile = new File("src/question-mark.jpg");
     private ImageView currentView;
     private Image defaultImg;
+    private int lastID;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        voce.SpeechInterface.init("C:/Users/andre/.IdeaIC2016.3/config/text-to-speech jars/voce-0.9.1/lib", true, false, "", "");
         try{
             recyclingBin.setImage(new Image(new FileInputStream(new File("src/recyclingbin.png"))));
             defaultImg = new Image(new FileInputStream(defaultImgFile));
@@ -74,6 +78,11 @@ public class MainController implements Initializable{
             setSavedImages();
         }
         setUpTextFields();
+        for(Element e :ProgramController.getCurrentScheduler().getElements()){
+            //System.out.println("bleh");
+            System.out.println("Speech Text: "+e.getSpeechText());
+        }
+
     }
 
     public void handleExit() throws IOException{
@@ -128,6 +137,31 @@ public class MainController implements Initializable{
         if(db.hasImage()){
             ImageView view = (ImageView)event.getSource();
             view.setImage(db.getImage());
+            int id=-1;
+            switch(view.getId()){
+                case "p1":
+                    id = 0;
+                    break;
+                case "p2":
+                    id = 1;
+                    break;
+                case "lunch":
+                    id = 2;
+                    break;
+                case "p3":
+                    id = 3;
+                    break;
+                case "p4":
+                    id = 4;
+                    break;
+            }
+
+            String fullPath = ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().get(lastID);
+            System.out.println("full path :"+fullPath);
+            String abreviation = fullPath.substring(fullPath.lastIndexOf("\\")+1, fullPath.lastIndexOf("."));
+            System.out.println("Abv of Id "+id +" is "+abreviation);
+            ProgramController.getCurrentScheduler().getElements().get(id).setSpeechText(abreviation);
+            System.out.println("Setting id "+id+" speechText to "+abreviation);
         }
         event.consume();
     }
@@ -137,6 +171,7 @@ public class MainController implements Initializable{
                 event.getDragboard().hasImage()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
+
         //currentView = (ImageView)event.getTarget();
         event.consume();
     }
@@ -170,13 +205,15 @@ public class MainController implements Initializable{
     }
 
     private void setDefaultImages(){
-
+        int id = 0;
         for(Node node: galleryBox.getChildren()){
             if(node instanceof HBox){
                 HBox box = (HBox)node;
                 for(Node _node: box.getChildren()){
                     if(_node instanceof ImageView){
                         ImageView view = (ImageView)_node;
+                        //view.setId("_"+id);
+                        id++;
                         view.setImage(defaultImg);
                         view.setPreserveRatio(false);
                         galleryViews.add(view);
@@ -187,13 +224,15 @@ public class MainController implements Initializable{
     }
 
     private void setSavedImages(){
+        int id = 0;
         try{
             for(String path: ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths()){
                 File file = new File(path);
                 Image image = new Image(new FileInputStream(file));
                 for(ImageView view: galleryViews){
-
-
+                    //view.setId("_"+id);
+                    id++;
+                    System.out.println("Setting ID with setSavedImages");
                     //System.out.println(file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()));
                     if(!file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()).equals("question-mark.jpg")&& view.getImage().equals(defaultImg)){
                         //System.out.println("yessssss");
@@ -207,6 +246,18 @@ public class MainController implements Initializable{
         }
     }
 
+    public void setOnDragDetectedUser(MouseEvent event){
+        ImageView view = (ImageView)event.getSource();
+        Dragboard db = view.startDragAndDrop(TransferMode.ANY);
+
+        ClipboardContent content = new ClipboardContent();
+        content.putImage(view.getImage());
+        db.setContent(content);
+        //db.setDragView(view.getImage());
+        currentView = view;
+        //lastID = Integer.parseInt(view.getId().substring(1));
+        event.consume();
+    }
     public void setOnDragDetected(MouseEvent event){
         ImageView view = (ImageView)event.getSource();
         Dragboard db = view.startDragAndDrop(TransferMode.ANY);
@@ -216,6 +267,8 @@ public class MainController implements Initializable{
         db.setContent(content);
         //db.setDragView(view.getImage());
         currentView = view;
+        lastID = Integer.parseInt(view.getId().substring(1));
+        System.out.println("LastID: "+lastID);
         event.consume();
     }
 
@@ -252,11 +305,6 @@ public class MainController implements Initializable{
         }
     }
 
-    public void setOnDeleteAll(){
-        for(ImageView view: userViews){
-            view.setImage(defaultImg);
-        }
-    }
 
 
     public void setOnRecycleDropped(DragEvent event){
@@ -269,9 +317,6 @@ public class MainController implements Initializable{
                     break;
                 }
             }
-
-
-
         }
     }
 
@@ -279,6 +324,41 @@ public class MainController implements Initializable{
         for(int i =0; i < fields.size(); i++){
             fields.get(i).setText(ProgramController.getCurrentScheduler().getElements().get(i).getText());
         }
+    }
+    //TODO add an exit method to stop synthesizer
+    public void setOnMouseEnter(MouseEvent event){
+        Scheduler s = ProgramController.getCurrentScheduler();
+        ImageView view = (ImageView)event.getTarget();
+
+        String id = view.getId();
+        //System.out.println("Id: "+id);
+        String text = new String();
+        switch (id){
+            case "p1":
+                text = s.getElements().get(0).getSpeechText();
+                System.out.println("text: "+text);
+                break;
+            case "p2":
+                text = s.getElements().get(1).getSpeechText();
+                break;
+            case "lunch":
+                text = s.getElements().get(2).getSpeechText();
+                break;
+            case "p3":
+                text = s.getElements().get(3).getSpeechText();
+                break;
+            case "p4":
+                text = s.getElements().get(4).getSpeechText();
+                break;
+            default:
+                text = "Error";
+        }
+        voce.SpeechInterface.synthesize(text);
+
+
+    }
+    public void setOnMouseExit(){
+        voce.SpeechInterface.stopSynthesizing();
     }
 
 

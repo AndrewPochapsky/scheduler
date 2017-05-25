@@ -12,7 +12,7 @@ public class Element implements Serializable {
     //TODO if use is not found remove this class, use could be holding the directory if the image it has
     private String filePath;
     private String text;
-
+    private String speechText;
     public Element(){
         filePath = "src/question-mark.jpg";
         text = new String();
@@ -32,6 +32,14 @@ public class Element implements Serializable {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getSpeechText() {
+        return speechText;
+    }
+
+    public void setSpeechText(String speechText) {
+        this.speechText = speechText;
     }
 }
 

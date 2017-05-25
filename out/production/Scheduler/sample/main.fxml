@@ -42,7 +42,7 @@
                   </VBox>
                   <VBox prefHeight="183.0" prefWidth="135.0">
                      <children>
-                        <ImageView fx:id="p1" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetected" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" />
+                        <ImageView fx:id="p1" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
                         <TextField>
                            <VBox.margin>
                               <Insets top="2.0" />
@@ -79,7 +79,7 @@
                   </VBox>
                   <VBox prefHeight="183.0" prefWidth="135.0">
                      <children>
-                        <ImageView fx:id="p11" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetected" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" />
+                        <ImageView fx:id="p2" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
                         <TextField>
                            <VBox.margin>
                               <Insets top="2.0" />
@@ -116,7 +116,7 @@
                   </VBox>
                   <VBox prefHeight="183.0" prefWidth="135.0">
                      <children>
-                        <ImageView fx:id="p12" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetected" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" />
+                        <ImageView fx:id="lunch" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
                         <TextField>
                            <VBox.margin>
                               <Insets top="2.0" />
@@ -153,7 +153,7 @@
                   </VBox>
                   <VBox prefHeight="183.0" prefWidth="135.0">
                      <children>
-                        <ImageView fx:id="p13" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetected" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" />
+                        <ImageView fx:id="p3" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
                         <TextField>
                            <VBox.margin>
                               <Insets top="2.0" />
@@ -190,7 +190,7 @@
                   </VBox>
                   <VBox prefHeight="183.0" prefWidth="135.0">
                      <children>
-                        <ImageView fx:id="p14" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetected" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" />
+                        <ImageView fx:id="p4" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
                         <TextField>
                            <VBox.margin>
                               <Insets top="2.0" />
@@ -230,18 +230,18 @@
             </Text>
             <HBox prefHeight="202.0" prefWidth="950.0">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_0" fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="_1" fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_2" fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_3" fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -250,18 +250,18 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="45.0" prefHeight="202.0" prefWidth="950.0">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_4" fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="_5" fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_6" fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_7" fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -273,18 +273,18 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="247.0" prefHeight="202.0" prefWidth="950.0">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_8" fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="_9" fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_10" fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_11" fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -296,18 +296,18 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="449.0" prefHeight="202.0" prefWidth="950.0">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_12" fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="_13" fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_14" fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="_15" fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets left="5.0" />
                      </HBox.margin>
@@ -319,7 +319,7 @@
             </HBox>
          </children>
          <BorderPane.margin>
-            <Insets top="-15.0" />
+            <Insets />
          </BorderPane.margin>
       </VBox>
    </right>

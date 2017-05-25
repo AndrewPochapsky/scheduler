@@ -61,11 +61,15 @@ public class GalleryController implements Initializable{
         if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > 0){
             setSavedImages();
         }
+        for(Element e :ProgramController.getCurrentScheduler().getElements()){
+            System.out.println("bleh");
+            System.out.println("Speech Text: "+e.getSpeechText());
+        }
 
     }
 
     private void setDefaultImages(){
-
+        int id = 0;
         for(Node node: pane.getChildren()){
             if(node instanceof HBox){
                 HBox box = (HBox)node;
@@ -73,6 +77,8 @@ public class GalleryController implements Initializable{
                     if(_node instanceof ImageView){
                         ImageView view = (ImageView)_node;
                         view.setImage(defaultImg);
+                        //view.setId("_"+id);
+                        id++;
                         view.setPreserveRatio(false);
                         galleryViews.add(view);
                     }
