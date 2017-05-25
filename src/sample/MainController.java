@@ -97,6 +97,7 @@ public class MainController implements Initializable{
         }
 
         System.out.println("Closing");
+        voce.SpeechInterface.destroy();
         FileHandler.save(ProgramController.getCurrentScheduler());
         Platform.exit();
     }
@@ -276,31 +277,38 @@ public class MainController implements Initializable{
         Button button = (Button)event.getSource();
         String id = button.getId();
         ImageView view = null;
+        Element e= null;
         switch(id){
             case "p1Button":
                 System.out.println("p1 pressed");
                 view = userViews.get(0);
+                e = ProgramController.getCurrentScheduler().getElements().get(0);
                 break;
             case "p2Button":
                 System.out.println("p2Pressed");
                 view = userViews.get(1);
+                e = ProgramController.getCurrentScheduler().getElements().get(1);
                 break;
             case "lunchButton":
                 System.out.println("lunch pressed");
                 view = userViews.get(2);
+                e = ProgramController.getCurrentScheduler().getElements().get(2);
                 break;
             case "p3Button":
                 System.out.println("p3 pressed");
                 view = userViews.get(3);
+                e = ProgramController.getCurrentScheduler().getElements().get(3);
                 break;
             case "p4Button":
                 System.out.println("p4 pressed");
                 view = userViews.get(4);
+                e = ProgramController.getCurrentScheduler().getElements().get(4);
                 break;
         }
         try{
             view.setImage(defaultImg);
-        }catch(NullPointerException e){
+            e.setSpeechText("");
+        }catch(NullPointerException ex){
             System.out.println("trying to delete from null imageview");
         }
     }
@@ -314,6 +322,7 @@ public class MainController implements Initializable{
             for(ImageView view: userViews){
                 if(currentView.equals(view)){
                     currentView.setImage(defaultImg);
+                    findElement(view.getId()).setSpeechText("");
                     break;
                 }
             }
@@ -325,7 +334,7 @@ public class MainController implements Initializable{
             fields.get(i).setText(ProgramController.getCurrentScheduler().getElements().get(i).getText());
         }
     }
-    //TODO add an exit method to stop synthesizer
+    //TODO make this work for gallery as well, will need to use id of each to get the correct imagepath and then read it out EZPZ
     public void setOnMouseEnter(MouseEvent event){
         Scheduler s = ProgramController.getCurrentScheduler();
         ImageView view = (ImageView)event.getTarget();
@@ -359,6 +368,39 @@ public class MainController implements Initializable{
     }
     public void setOnMouseExit(){
         voce.SpeechInterface.stopSynthesizing();
+    }
+
+    public void setOnMouseEnterGallery(MouseEvent event){
+        ImageView view = (ImageView)event.getTarget();
+        int id = Integer.parseInt(view.getId().substring(1));
+        if(!view.getImage().equals(defaultImg)){
+            String path = ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().get(id);
+            String text = path.substring(path.lastIndexOf("\\")+1, path.lastIndexOf("."));
+            voce.SpeechInterface.synthesize(text);
+        }
+
+    }
+
+    private Element findElement(String id){
+        Element e = null;
+        switch(id){
+            case "p1":
+                e = ProgramController.getCurrentScheduler().getElements().get(0);
+                break;
+            case "p2":
+                e = ProgramController.getCurrentScheduler().getElements().get(1);
+                break;
+            case "lunch":
+                e = ProgramController.getCurrentScheduler().getElements().get(2);
+                break;
+            case "p3":
+                e = ProgramController.getCurrentScheduler().getElements().get(3);
+                break;
+            case "p4":
+                e = ProgramController.getCurrentScheduler().getElements().get(4);
+                break;
+        }
+        return e;
     }
 
 
