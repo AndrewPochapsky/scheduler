@@ -10,9 +10,6 @@ public class GalleryInfo implements Serializable{
 
     public GalleryInfo(){
         imagePaths = new ArrayList<>();
-        /*for(int i = 0; i< 16; i++){
-            imagePaths.add(i, "heh");
-        }*/
     }
 
     public List<String> getImagePaths() {

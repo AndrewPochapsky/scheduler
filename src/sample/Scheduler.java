@@ -1,8 +1,5 @@
 package sample;
 
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;

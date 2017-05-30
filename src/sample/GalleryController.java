@@ -95,8 +95,6 @@ public class GalleryController implements Initializable{
         FileChooser.ExtensionFilter extFilterJPGandPNG = new FileChooser.ExtensionFilter("JPG files (*.jpg) and PNG files (*.png)", "*.JPG","*.PNG", "Test");
         //FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
         fileChooser.getExtensionFilters().addAll(extFilterJPGandPNG);
-
-
         File file = fileChooser.showOpenDialog(currentStage);
 
         try{
@@ -106,14 +104,8 @@ public class GalleryController implements Initializable{
                 Image currentImage = galleryViews.get(i).getImage();
                 if(currentImage.equals(defaultImg)){
                     galleryViews.get(i).setImage(image);
-                   // System.out.println("INT i ="+i);
-                    /*if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i) {
-                        System.out.println("setting to new image (gallery)");
-                        ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, file.getAbsolutePath());
-                    }else{*/
-                        System.out.println("adding new image (gallery)");
-                        ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, file.getAbsolutePath());
-                    //}
+                    System.out.println("adding new image (gallery)");
+                    ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, file.getAbsolutePath());
                     break;
                 }
             }
@@ -129,9 +121,6 @@ public class GalleryController implements Initializable{
                 File file = new File(path);
                 Image image = new Image(new FileInputStream(file));
                 for(int i = 0; i< galleryViews.size(); i++){
-
-                    //System.out.println("path2: "+path);
-                    //System.out.println(file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()));
                     if(!file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()).equals("question-mark.jpg")&& galleryViews.get(i).getImage().equals(defaultImg)){
                         System.out.println("setting saved image");
                         galleryViews.get(i).setImage(image);
@@ -184,8 +173,6 @@ public class GalleryController implements Initializable{
             String id = currentView.getId();
             System.out.println("Id: "+id);
             ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(Integer.parseInt(id.substring(1)), defaultImgFile.getAbsolutePath());
-
-
         }
         for(int i =0; i < galleryViews.size(); i++){
             if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().get(i).equals(defaultImgFile.getAbsolutePath())){
@@ -200,21 +187,6 @@ public class GalleryController implements Initializable{
 
 
     public void handleSaveAndExit()throws IOException{
-
-        for(int i = 0; i< galleryViews.size(); i++){
-            if(galleryViews.get(i).getImage().equals(defaultImg)){
-                //System.out.println("removing");
-                //ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
-                /*if(ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().size() > i) {
-                    System.out.println("changing to default image");
-                    ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().set(i, defaultImgFile.getAbsolutePath());
-                }else{
-                    System.out.println("adding default image");
-                    ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().add(i, defaultImgFile.getAbsolutePath());
-                }*/
-            }
-        }
-
         FileHandler.save(ProgramController.getCurrentScheduler());
         Stage stage = (Stage)title.getScene().getWindow();
         stage.close();

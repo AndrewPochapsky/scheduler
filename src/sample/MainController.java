@@ -3,7 +3,6 @@ package sample;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -14,12 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -158,11 +151,8 @@ public class MainController implements Initializable{
             }
 
             String fullPath = ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths().get(lastID);
-            System.out.println("full path :"+fullPath);
             String abreviation = fullPath.substring(fullPath.lastIndexOf("\\")+1, fullPath.lastIndexOf("."));
-            System.out.println("Abv of Id "+id +" is "+abreviation);
             ProgramController.getCurrentScheduler().getElements().get(id).setSpeechText(abreviation);
-            System.out.println("Setting id "+id+" speechText to "+abreviation);
         }
         event.consume();
     }
@@ -172,8 +162,6 @@ public class MainController implements Initializable{
                 event.getDragboard().hasImage()) {
             event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
         }
-
-        //currentView = (ImageView)event.getTarget();
         event.consume();
     }
 
@@ -182,39 +170,19 @@ public class MainController implements Initializable{
             BufferedImage bImage = SwingFXUtils.fromFXImage(view.getImage(), null);
             String id = view.getId();
             ImageIO.write(bImage, "png", file);
-
-            switch (id){
-                case "p1":
-                    ProgramController.getCurrentScheduler().getElements().get(0).setFileName(file.getAbsolutePath());
-                    break;
-                case "p2":
-                    ProgramController.getCurrentScheduler().getElements().get(1).setFileName(file.getAbsolutePath());
-                    break;
-                case "lunch":
-                    ProgramController.getCurrentScheduler().getElements().get(2).setFileName(file.getAbsolutePath());
-                    break;
-                case "p3":
-                    ProgramController.getCurrentScheduler().getElements().get(3).setFileName(file.getAbsolutePath());
-                    break;
-                case "p4":
-                    ProgramController.getCurrentScheduler().getElements().get(4).setFileName(file.getAbsolutePath());
-                    break;
-            }
+            findElement(id).setFileName(file.getAbsolutePath());
         }catch(IOException e){
             e.printStackTrace();
         }
     }
 
     private void setDefaultImages(){
-        int id = 0;
         for(Node node: galleryBox.getChildren()){
             if(node instanceof HBox){
                 HBox box = (HBox)node;
                 for(Node _node: box.getChildren()){
                     if(_node instanceof ImageView){
                         ImageView view = (ImageView)_node;
-                        //view.setId("_"+id);
-                        id++;
                         view.setImage(defaultImg);
                         view.setPreserveRatio(false);
                         galleryViews.add(view);
@@ -225,18 +193,12 @@ public class MainController implements Initializable{
     }
 
     private void setSavedImages(){
-        int id = 0;
         try{
             for(String path: ProgramController.getCurrentScheduler().getGalleryInfo().getImagePaths()){
                 File file = new File(path);
                 Image image = new Image(new FileInputStream(file));
                 for(ImageView view: galleryViews){
-                    //view.setId("_"+id);
-                    id++;
-                    System.out.println("Setting ID with setSavedImages");
-                    //System.out.println(file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()));
                     if(!file.getAbsolutePath().substring(file.getAbsolutePath().length()-17,file.getAbsolutePath().length()).equals("question-mark.jpg")&& view.getImage().equals(defaultImg)){
-                        //System.out.println("yessssss");
                         view.setImage(image);
                         break;
                     }
@@ -278,6 +240,7 @@ public class MainController implements Initializable{
         String id = button.getId();
         ImageView view = null;
         Element e= null;
+
         switch(id){
             case "p1Button":
                 System.out.println("p1 pressed");
@@ -336,35 +299,8 @@ public class MainController implements Initializable{
     }
     //TODO make this work for gallery as well, will need to use id of each to get the correct imagepath and then read it out EZPZ
     public void setOnMouseEnter(MouseEvent event){
-        Scheduler s = ProgramController.getCurrentScheduler();
         ImageView view = (ImageView)event.getTarget();
-
-        String id = view.getId();
-        //System.out.println("Id: "+id);
-        String text = new String();
-        switch (id){
-            case "p1":
-                text = s.getElements().get(0).getSpeechText();
-                System.out.println("text: "+text);
-                break;
-            case "p2":
-                text = s.getElements().get(1).getSpeechText();
-                break;
-            case "lunch":
-                text = s.getElements().get(2).getSpeechText();
-                break;
-            case "p3":
-                text = s.getElements().get(3).getSpeechText();
-                break;
-            case "p4":
-                text = s.getElements().get(4).getSpeechText();
-                break;
-            default:
-                text = "Error";
-        }
-        voce.SpeechInterface.synthesize(text);
-
-
+        voce.SpeechInterface.synthesize(findElement(view.getId()).getSpeechText());
     }
     public void setOnMouseExit(){
         voce.SpeechInterface.stopSynthesizing();

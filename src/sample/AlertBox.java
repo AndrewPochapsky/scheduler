@@ -14,10 +14,6 @@ public class AlertBox {
         return yes;
     }
 
-    public void setYes(boolean deleteEntry) {
-        this.yes= deleteEntry;
-    }
-
     public AlertBox(String title, String message){
         this.title = title;
         this.message = message;
