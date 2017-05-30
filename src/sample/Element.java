@@ -3,27 +3,37 @@ package sample;
 import java.io.Serializable;
 
 public class Element implements Serializable {
-
-    private String fileName;
-    private int id;
-
+    private String filePath;
+    private String text;
+    private String speechText;
     public Element(){
-
+        filePath = "src/question-mark.jpg";
+        text = new String();
     }
 
     public String getFileName() {
-        return fileName;
+        return filePath;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setFileName(String filePath) {
+        this.filePath = filePath;
     }
 
-    public int getId() {
-        return id;
+    public String getText() {
+        return text;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getSpeechText() {
+        return speechText;
+    }
+
+    public void setSpeechText(String speechText) {
+        this.speechText = speechText;
     }
 }
+
+

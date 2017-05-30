@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,20 +15,7 @@ import java.util.List;
 
 public class Utility {
 
-    //TODO maybe change this function in the future since it's kinda jank
-    public static boolean isInteger(String s){
-        try {
-            Integer.parseInt(s);
-        } catch(NumberFormatException e) {
-            return false;
-        } catch(NullPointerException e) {
-            return false;
-        }
-        // only got here if it didn't return false
-        return true;
-    }
-
-    public void loadScene(String name, double width, double height, ActionEvent event, boolean isMaximized, boolean isResizable, boolean newWindow)throws IOException{
+    public void loadScene(String name, double width, double height, ActionEvent event, boolean isMaximized, boolean isResizable, boolean newWindow, boolean isUndecorated)throws IOException{
         Parent parent = FXMLLoader.load(getClass().getResource(name+".fxml"));
         Scene scene = new Scene(parent, width, height);
         Stage stage;
@@ -36,6 +24,9 @@ public class Utility {
         }
         else{
             stage= (Stage)((Node)event.getSource()).getScene().getWindow();
+        }
+        if(isUndecorated){
+            stage.initStyle(StageStyle.UNDECORATED);
         }
         stage.setScene(scene);
         stage.setTitle(name);

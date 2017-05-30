@@ -7,43 +7,31 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CreateController">
    <children>
-      <Text layoutX="-77.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup Scheduler" textAlignment="CENTER" wrappingWidth="600.0">
+      <Text layoutX="3.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup Scheduler" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
             <Font name="Consolas" size="28.0" />
          </font>
       </Text>
-      <Text layoutX="-82.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display Title" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.bottomAnchor="319.0" AnchorPane.leftAnchor="-82.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="63.0">
+      <Text layoutX="-2.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name" textAlignment="CENTER" wrappingWidth="600.0" AnchorPane.bottomAnchor="322.14013671875" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="62.85986328125">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="titleInput" layoutX="134.0" layoutY="82.0" promptText="title" />
-      <Text layoutX="-80.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" textAlignment="CENTER" wrappingWidth="600.0">
-         <font>
-            <Font name="Consolas" size="15.0" />
-         </font>
-      </Text>
-      <TextArea fx:id="descriptionInput" layoutX="97.0" layoutY="140.0" prefHeight="100.0" prefWidth="262.0" promptText="description" wrapText="true" />
-      <Text layoutX="-82.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Rows" textAlignment="CENTER" wrappingWidth="600.0">
-         <font>
-            <Font name="Consolas" size="15.0" />
-         </font>
-      </Text>
-      <TextField fx:id="rowInput" layoutX="134.0" layoutY="276.0" promptText="number of rows" />
-      <Button layoutX="183.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleCreate" text="Create">
+      <TextField fx:id="titleInput" layoutX="214.0" layoutY="82.0" promptText="name" />
+      <Button layoutX="263.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleCreate" text="Create">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
       </Button>
-      <Text fx:id="validRowsText" fill="#ff0808" layoutX="133.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Please enter a number*">
+      <Text fx:id="validTitleText" fill="#ff0808" layoutX="203.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Title cannot contain '.'*">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
       </Text>
-      <Text fx:id="validTitleText" fill="#ff0808" layoutX="123.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Title cannot contain '.'*">
+      <Button layoutX="272.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleBack" text="Back">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
-      </Text>
+      </Button>
    </children>
 </AnchorPane>

@@ -1,45 +1,332 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1162.0" prefWidth="2044.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Exit" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Add Row" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
    </top>
+   <left>
+      <VBox fx:id="vbox" alignment="CENTER_LEFT" prefHeight="1100.0" prefWidth="772.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="183.0" prefWidth="772.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Period 1" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="183.0" prefWidth="135.0">
+                     <children>
+                        <ImageView fx:id="p1" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
+                        <TextField>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="210.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Button fx:id="p1Button" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="113.0" prefHeight="183.0" prefWidth="419.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Period 2" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="183.0" prefWidth="135.0">
+                     <children>
+                        <ImageView fx:id="p2" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
+                        <TextField>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="210.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Button fx:id="p2Button" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="194.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBLue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lunch" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="55.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="183.0" prefWidth="135.0">
+                     <children>
+                        <ImageView fx:id="lunch" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
+                        <TextField>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="210.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Button fx:id="lunchButton" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="471.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Period 3" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="183.0" prefWidth="135.0">
+                     <children>
+                        <ImageView fx:id="p3" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
+                        <TextField>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="210.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Button fx:id="p3Button" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="552.0" prefHeight="183.0" prefWidth="200.0" style="-fx-border-color: Black; -fx-background-color: LightBlue;">
+               <children>
+                  <VBox prefWidth="183.0" style="-fx-border-color: Black;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Period 4" textAlignment="CENTER">
+                           <font>
+                              <Font name="Consolas" size="26.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="35.0" top="80.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="183.0" prefWidth="135.0">
+                     <children>
+                        <ImageView fx:id="p4" fitHeight="152.0" fitWidth="152.0" onDragDetected="#setOnDragDetectedUser" onDragDropped="#SetOnDragDropped" onDragOver="#SetOnDragOver" onMouseEntered="#setOnMouseEnter" onMouseExited="#setOnMouseExit" pickOnBounds="true" />
+                        <TextField>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="210.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Button fx:id="p4Button" mnemonicParsing="false" onAction="#setOnDeletePressed" text="Delete">
+                     <font>
+                        <Font name="Consolas" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" top="63.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets top="-130.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <right>
+      <VBox fx:id="galleryBox" prefHeight="1022.0" prefWidth="955.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gallery" textAlignment="CENTER">
+               <font>
+                  <Font name="Consolas Bold" size="35.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="13.0" left="350.0" top="13.0" />
+               </VBox.margin>
+            </Text>
+            <HBox prefHeight="202.0" prefWidth="950.0">
+               <children>
+                  <ImageView fx:id="_0" fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="_1" fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="_2" fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="_3" fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="45.0" prefHeight="202.0" prefWidth="950.0">
+               <children>
+                  <ImageView fx:id="_4" fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="_5" fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="_6" fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="_7" fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="247.0" prefHeight="202.0" prefWidth="950.0">
+               <children>
+                  <ImageView fx:id="_8" fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="_9" fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="_10" fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="_11" fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="449.0" prefHeight="202.0" prefWidth="950.0">
+               <children>
+                  <ImageView fx:id="_12" fitHeight="200.0" fitWidth="200.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="_13" fitHeight="200.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="_14" fitHeight="200.0" fitWidth="200.0" layoutX="210.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="_15" fitHeight="200.0" fitWidth="200.0" layoutX="410.0" layoutY="10.0" onDragDetected="#setOnDragDetected" onMouseEntered="#setOnMouseEnterGallery" onMouseExited="#setOnMouseExit" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </right>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="nameDisplay" layoutX="236.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scheduler Name" />
-            <Text fx:id="descriptionDisplay" layoutX="248.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-            <Text fx:id="amountOfRowsDisplay" layoutX="227.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of Rows: " />
-            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="204.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../Desktop/question-mark.jpg" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="recyclingBin" fitHeight="140.0" fitWidth="140.0" layoutX="89.0" layoutY="133.0" onDragDropped="#setOnRecycleDropped" onDragOver="#SetOnDragOver" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </center>

@@ -1,5 +1,6 @@
 package sample;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,34 +8,22 @@ import java.util.List;
 public class Scheduler implements Serializable{
 
     private String title;
-    private String description;
-    private List<TableRow> rows;
 
-    private final String DEFAULT_TITLE = "Schedule";
-    private final String DEFAULT_DESCRIPTION = "Schedule your classes";
+    private File directory;
 
-    public Scheduler(){
-        title= DEFAULT_TITLE;
-        description = DEFAULT_DESCRIPTION;
-        rows = new ArrayList<>();
-    }
-    public Scheduler(String title, String description){
-        if(!title.trim().equals("")){
-            this.title = title;
-        }else{
-            this.title=DEFAULT_TITLE;
-        }
-        if(!description.trim().equals(""))
-            this.description= description;
-        else{
-            this.description=DEFAULT_DESCRIPTION;
-        }
-        rows = new ArrayList<>();
-    }
+    private List<Element> elements;
 
-    public void addEmptyRow(){
-        TableRow row = new TableRow();
-        rows.add(row);
+    private GalleryInfo galleryInfo;
+
+
+    public Scheduler(String title){
+        this.title = title;
+        galleryInfo = new GalleryInfo();
+        elements = new ArrayList<>();
+        directory = new File("schedulers/"+title);
+        directory.mkdir();
+        File imgFile = new File(directory + "/images");
+        imgFile.mkdir();
     }
 
     public String getTitle() {
@@ -45,19 +34,20 @@ public class Scheduler implements Serializable{
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+
+    public List<Element> getElements() {
+        return elements;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public GalleryInfo getGalleryInfo() {
+        return galleryInfo;
     }
 
-    public List<TableRow> getRows() {
-        return rows;
+    public File getDirectory() {
+        return directory;
     }
 
-    public void setRows(List<TableRow> rows) {
-        this.rows = rows;
+    public void setDirectory(File directory) {
+        this.directory = directory;
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TeacherController">
+   <children>
+      <Text layoutX="168.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teacher Controls">
+         <font>
+            <Font name="Consolas" size="30.0" />
+         </font>
+      </Text>
+      <Button layoutX="232.0" layoutY="95.0" mnemonicParsing="false" onAction="#handleAddStudent" text="Add Student...">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="278.0" layoutY="186.0" mnemonicParsing="false" onAction="#handleBack" text="Back">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="228.0" layoutY="133.0" mnemonicParsing="false" onAction="#handleRemoveStudent" text="Edit Student...">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

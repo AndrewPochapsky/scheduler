@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="voce">
+    <CLASSES>
+      <root url="jar://$APPLICATION_CONFIG_DIR$/text-to-speech jars/voce-0.9.1/lib/voce.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

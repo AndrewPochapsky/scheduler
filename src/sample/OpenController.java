@@ -29,6 +29,8 @@ public class OpenController implements Initializable{
     @FXML
     Button closeButton;
 
+    Utility utility = new Utility();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -41,18 +43,19 @@ public class OpenController implements Initializable{
     }
 
     public void handleOpen(ActionEvent event) throws ClassNotFoundException, IOException{
-        FileHandler.load(fileList.getSelectionModel().getSelectedItem());
+        if(fileList.getSelectionModel().getSelectedItem()!=null){
+            FileHandler.load(fileList.getSelectionModel().getSelectedItem());
 
-        Utility utility = new Utility();
-        utility.loadScene("main", 1200, 800, event, true, true, false);
-        Main.getMainStage().close();
-
-        //System.out.println(fileList.getSelectionModel().getSelectedItem());
+            utility.loadScene("main", 1200, 800, event, true, true, false, false);
+            //Main.getMainStage().close();
+        }
     }
 
-    public void handleClose(){
-        Stage stage =(Stage)closeButton.getScene().getWindow();
-        stage.close();
+
+
+
+    public void handleBack(ActionEvent event)throws IOException{
+        utility.loadScene("menu", 600, 400, event, false, false, false, false);
     }
 
 
